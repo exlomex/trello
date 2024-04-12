@@ -21,7 +21,6 @@ const nextConfig = {
                     },
                     "sass-loader",
                 ],
-
             });
             config.plugins.push(
                 new MiniCssExtractPlugin({

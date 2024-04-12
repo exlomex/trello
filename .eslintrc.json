@@ -1,5 +1,8 @@
 {
   "extends": ["next/core-web-vitals", "airbnb-base", "next"],
+  "env": {
+    "jest": true
+  },
   "rules": {
     "indent": ["warn", 4, {"ignoredNodes": ["JSXElement"]}],
     "react/jsx-indent": ["warn", 4],
@@ -13,6 +16,7 @@
     "react/function-component-definition": "off",
     "no-shadow": "off",
     "import/extensions": "off",
-    "no-underscore-dangle": "off"
+    "no-underscore-dangle": "off",
+    "max-len": ["error", { "ignoreTrailingComments": true, "code":  100}]
   }
 }
