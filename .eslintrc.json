@@ -1,0 +1,18 @@
+{
+  "extends": ["next/core-web-vitals", "airbnb-base", "next"],
+  "rules": {
+    "indent": ["warn", 4, {"ignoredNodes": ["JSXElement"]}],
+    "react/jsx-indent": ["warn", 4],
+    "react/jsx-indent-props": ["warn", 4],
+    "no-unused-vars": "warn",
+    "import/no-unresolved": "off",
+    "import/prefer-default-export": "off",
+    "react/require-default-props": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-props-no-spreading": "warn",
+    "react/function-component-definition": "off",
+    "no-shadow": "off",
+    "import/extensions": "off",
+    "no-underscore-dangle": "off"
+  }
+}
