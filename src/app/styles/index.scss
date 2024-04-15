@@ -1,20 +1,20 @@
-@import "reset.css";
-@import "variables/global-vars";
-@import "themes/light_theme";
-@import "themes/dark_theme";
+@import 'reset.css';
+@import 'variables/global-vars';
+@import 'themes/light_theme';
+@import 'themes/dark_theme';
 
 .app {
-  font: var(--font-m);
+    font: var(--font-m);
 }
 
 .wrapper {
-  min-height: 100%;
-  width: 100%;
-  overflow: hidden;
+    min-height: 100%;
+    width: 100%;
+    overflow: hidden;
 
-  //  color
-  color: var(--text-color);
+    //  color
+    color: var(--text-color);
 
-  //  bg
-  background-color: var(--bg);
+    //  bg
+    background-color: var(--bg);
 }

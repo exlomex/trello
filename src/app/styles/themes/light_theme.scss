@@ -1,21 +1,20 @@
 .light {
-  --bg: #F0F0F0;
-  --aside-bg: #FFFFFF;
-  --second-color: #F4F4F4;
+    --bg: #f0f0f0;
+    --aside-bg: #fff;
+    --second-color: #f4f4f4;
 
-  // card
-  --card: #FFFFFF;
+    // card
+    --card: #fff;
 
-  // skeleton
-  //--skeleton-color: #fff;
-  //--skeleton-shadow: rgba(0 0 0 / 20%);
+    // skeleton
+    // --skeleton-color: #fff;
+    // --skeleton-shadow: rgba(0 0 0 / 20%);
 
-  // text-color
-  --text-color: #121212;
-  --text-color-hover: #727272;
+    // text-color
+    --text-color: #121212;
+    --text-color-hover: #727272;
+    --search-text: #5c5c5c;
 
-  --search-text: #5C5C5C;
-
-  // buttons
-  --delete_add-button: #F5F5F5;
+    // buttons
+    --delete-add-button: #f5f5f5;
 }

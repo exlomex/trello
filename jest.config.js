@@ -6,15 +6,11 @@ module.exports = {
     testEnvironment: 'jsdom',
 
     // An array of regexp pattern strings used to skip coverage collection
-    coveragePathIgnorePatterns: [
-        '\\\\node_modules\\\\',
-    ],
+    coveragePathIgnorePatterns: ['\\\\node_modules\\\\'],
 
     // An array of directory names to
     // be searched recursively up from the requiring module's location
-    moduleDirectories: [
-        'node_modules',
-    ],
+    moduleDirectories: ['node_modules'],
 
     // An array of file extensions your modules use
     moduleFileExtensions: [
@@ -28,9 +24,7 @@ module.exports = {
         'node',
     ],
 
-    testMatch: [
-        '<rootDir>/**/*(*.)@(spec|test).[tj]s?()',
-    ],
+    testMatch: ['<rootDir>/**/*(*.)@(spec|test).[tj]s?()'],
 
     preset: 'ts-jest',
 };

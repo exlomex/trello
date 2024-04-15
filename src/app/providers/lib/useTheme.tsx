@@ -3,7 +3,7 @@ import { LOCAL_STORAGE_THEME_KEY } from '@/shared/const/localstorages';
 import { Theme, ThemeContext } from './ThemeContext';
 
 export interface UseThemeResult {
-    toggleTheme?: () => void,
+    toggleTheme?: () => void;
     theme: Theme;
 }
 

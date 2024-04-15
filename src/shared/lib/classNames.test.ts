@@ -7,19 +7,15 @@ describe('classNames', () => {
 
     const secondTestExpected = 'classname one two';
     test('with additional', () => {
-        expect(classNames(
-            'classname',
-            {},
-            ['one', 'two'],
-        )).toBe(secondTestExpected);
+        expect(classNames('classname', {}, ['one', 'two'])).toBe(
+            secondTestExpected,
+        );
     });
 
     const thirdTestExpected = 'classname one two bag';
     test('with mods', () => {
-        expect(classNames(
-            'classname',
-            { bag: true, only: false },
-            ['one', 'two'],
-        )).toBe(thirdTestExpected);
+        expect(
+            classNames('classname', { bag: true, only: false }, ['one', 'two']),
+        ).toBe(thirdTestExpected);
     });
 });

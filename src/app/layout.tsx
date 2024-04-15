@@ -9,7 +9,7 @@ import { ThemeLayout } from '@/shared/layouts/ThemeLayout/ThemeLayout';
 export default function RootLayout({
     children,
 }: Readonly<{
-  children: React.ReactNode;
+    children: React.ReactNode;
 }>) {
     const redirect = useRouter();
 
@@ -17,9 +17,7 @@ export default function RootLayout({
         <html lang="en">
             <body className={'app'}>
                 <ThemeProvider>
-                    <ThemeLayout>
-                        {children}
-                    </ThemeLayout>
+                    <ThemeLayout>{children}</ThemeLayout>
                 </ThemeProvider>
             </body>
         </html>

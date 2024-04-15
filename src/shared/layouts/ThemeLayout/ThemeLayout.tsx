@@ -8,9 +8,5 @@ interface ThemeLayoutProps {
 
 export const ThemeLayout = memo(({ children }: ThemeLayoutProps) => {
     const { theme } = useTheme();
-    return (
-        <div className={classNames('wrapper', {}, [theme])}>
-            {children}
-        </div>
-    );
+    return <div className={classNames('wrapper', {}, [theme])}>{children}</div>;
 });
