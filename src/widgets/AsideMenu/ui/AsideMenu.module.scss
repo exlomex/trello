@@ -1,0 +1,7 @@
+.AsideMenu {
+    height: 100vh;
+    width: var(--sidebar-width);
+    background-color: var(--aside-bg);
+    padding: 40px 25px;
+    transition: width 0.2s ease;
+}
