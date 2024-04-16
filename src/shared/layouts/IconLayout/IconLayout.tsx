@@ -1,9 +1,10 @@
 import React, { FC, memo, ReactNode, SVGProps } from 'react';
+import { classNames } from '@/shared/lib/classNames';
 import cls from './IconLayout.module.scss';
 
 interface IIcon extends SVGProps<SVGAElement> {
     className?: string;
-    children: ReactNode;
+    Svg: React.FC<React.SVGProps<SVGSVGElement>>;
 }
 
 interface NonClickableIconProps extends IIcon {
@@ -21,24 +22,19 @@ export const IconLayout: FC<IconProps> = memo((props) => {
         className,
         height = '20px',
         width = '20px',
-        children,
         clickable,
         onClick = undefined,
-        viewBox,
+        Svg,
     } = props;
 
     const layoutIcon = (
-        <svg
+        <Svg
             stroke="#5C5C5C"
             fill="#5C5C5C"
-            className={className}
-            viewBox={viewBox}
-            xmlns="http://www.w3.org/2000/svg"
+            className={classNames(cls.Icon, {}, [className])}
             height={height}
             width={width}
-        >
-            {children}
-        </svg>
+        />
     );
 
     if (clickable) {

@@ -2,7 +2,7 @@ import { classNames } from '@/shared/lib/classNames';
 import { FC } from 'react';
 import { IconLayout } from '@/shared/layouts/IconLayout/IconLayout';
 import { Input } from '@/shared/ui/Input/Input';
-import { SettingIcon } from '@/shared/ui/icons/SettingIcon';
+import SettingSvg from '@/shared/assets/settings.svg';
 import cls from './AsideMenu.module.scss';
 
 interface AsideMenuProps {
@@ -15,6 +15,12 @@ export const AsideMenu: FC = ({ className }: AsideMenuProps) => (
             <Input placeholder={'Поиск'} />
             <div>скрыть</div>
         </div>
-        <SettingIcon />
+        <IconLayout
+            Svg={SettingSvg}
+            clickable={true}
+            onClick={() => {
+                console.log(123);
+            }}
+        />
     </aside>
 );
