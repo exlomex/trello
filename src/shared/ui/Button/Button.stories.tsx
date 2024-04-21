@@ -1,8 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
-
 import { HideIcon } from '@/shared/ui/Icons/HideIcon';
-import { Input } from '@/shared/ui/Input';
 import { Button } from './Button';
 
 const meta = {
