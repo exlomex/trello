@@ -1,0 +1,19 @@
+.BoardName {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 0 12px;
+    cursor: pointer;
+    margin-bottom: 14px;
+}
+
+.boardBox {
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+}
+
+.boardText {
+    max-width: 195px;
+    overflow: hidden;
+}

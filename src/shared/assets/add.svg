@@ -1,0 +1,5 @@
+<svg width="33" height="33" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="0.5" y="0.5" width="32" height="32" rx="3.5" stroke="#5C5C5C" stroke-dasharray="4 4"/>
+<rect x="16" y="13" width="1" height="7" fill="#5C5C5C"/>
+<rect x="20" y="16" width="1" height="7" transform="rotate(90 20 16)" fill="#5C5C5C"/>
+</svg>

@@ -4,6 +4,8 @@ import SettingSvg from '@/shared/assets/settings.svg';
 import { IconLayout } from '@/shared/layouts/IconLayout';
 import { Input } from '@/shared/ui/Input';
 import { Button } from '@/shared/ui/Button/Button';
+import HideSvg from '@/shared/assets/hide.svg';
+import { BoardName } from '@/entities/ui/BoardName';
 import cls from './AsideMenu.module.scss';
 
 interface AsideMenuProps {
@@ -12,8 +14,11 @@ interface AsideMenuProps {
 
 export const AsideMenu: FC = ({ className }: AsideMenuProps) => (
     <aside className={classNames(cls.AsideMenu, {}, [className])}>
-        <div>
+        <div className={classNames(cls.asideUpper, {}, [])}>
             <Input placeholder={'Поиск'} />
+            <Button variant={'hideButton'}>
+                <IconLayout Svg={HideSvg} width={'11px'} height={'19px'} />
+            </Button>
         </div>
         <IconLayout
             Svg={SettingSvg}
@@ -22,6 +27,15 @@ export const AsideMenu: FC = ({ className }: AsideMenuProps) => (
                 console.log(123);
             }}
         />
-        <Button disabled={true}>13</Button>
+
+        <BoardName
+            onClick={() => {
+                console.log(13);
+            }}
+        >
+            Первая доска
+        </BoardName>
+        <BoardName>ЕщваыавапыыфываптЕщваыавапыыфывапт</BoardName>
+        <BoardName>ваыьщдз</BoardName>
     </aside>
 );

@@ -1,9 +1,35 @@
 .Button {
+    display: flex;
     border-radius: 6px;
-    width: 100px;
+    width: 120px;
     height: 32px;
-    background-color: var(--delete-add-button);
     color: var(--text-color);
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+.deleteButton {
+    background-color: var(--delete-button);
+}
+
+.addButton {
+    background-color: var(--add-button);
+}
+
+.hideButton {
+    background-color: var(--second-color);
+    border-radius: 12px;
+    width: 42px;
+    height: 42px;
+
+    svg {
+        transform: translateX(-1px);
+    }
+
+    &:hover {
+        background-color: var(--input-active-color);
+    }
 }
 
 .fullWidth {
