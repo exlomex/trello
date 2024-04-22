@@ -2,11 +2,44 @@
     height: 100vh;
     width: var(--sidebar-width);
     background-color: var(--aside-bg);
-    padding: 40px 25px;
+    padding: 30px 25px;
     transition: width 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    svg {
+        transition: transform 0.3s ease;
+    }
+
+    .settingButton {
+        transition: padding 0.3s ease;
+    }
 }
 
 .asideUpper {
     display: flex;
     justify-content: space-between;
+}
+
+.collapsed {
+    width: var(--sidebar-width-collapsed);
+    padding: 30px 15px;
+
+    input {
+        opacity: 0;
+        display: none;
+    }
+
+    svg {
+        transform: rotate(-180deg);
+    }
+
+    .asideUpper {
+        justify-content: center;
+    }
+
+    .settingButton {
+        padding-left: 13px;
+    }
 }

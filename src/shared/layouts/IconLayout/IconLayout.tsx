@@ -31,7 +31,7 @@ export const IconLayout: FC<IconProps> = memo((props) => {
         <Svg
             stroke="#5C5C5C"
             fill="#5C5C5C"
-            className={classNames(cls.Icon, {}, [className])}
+            className={cls.Icon}
             height={height}
             width={width}
         />
@@ -39,7 +39,10 @@ export const IconLayout: FC<IconProps> = memo((props) => {
 
     if (clickable) {
         return (
-            <button className={cls.button} onClick={props.onClick}>
+            <button
+                className={classNames(cls.button, {}, [className])}
+                onClick={props.onClick}
+            >
                 {layoutIcon}
             </button>
         );
