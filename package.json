@@ -8,13 +8,12 @@
     "start": "next start",
     "lint:ts": "next lint",
     "lint:ts:fix": "next lint --fix",
-    "unit": "jest --config src/app/jest.config.js",
+    "unit": "jest --config ./jest.config.js",
     "lint:scss": "npx stylelint **/*.scss",
     "lint:scss:fix": "npx stylelint **/*.scss --fix",
     "prettier:fix": "prettier . --write",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
-    "test": "jest"
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@storybook/addon-themes": "^8.0.8",
