@@ -9,6 +9,5 @@ describe('sidebar', () => {
     test('instanceSidebar', () => {
         render(<AsideMenu />);
         expect(screen.getByTestId('asideMenu')).toBeInTheDocument();
-        screen.debug();
     });
 });
