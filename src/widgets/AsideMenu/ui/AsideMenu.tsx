@@ -1,5 +1,5 @@
 import { classNames } from '@/shared/lib/classNames';
-import { FC, useState } from 'react';
+import { memo, useState } from 'react';
 import SettingSvg from '@/shared/assets/settings.svg';
 import { IconLayout } from '@/shared/layouts/IconLayout';
 import { Input } from '@/shared/ui/Input';
@@ -11,7 +11,7 @@ interface AsideMenuProps {
     className?: string;
 }
 
-export const AsideMenu: FC = ({ className }: AsideMenuProps) => {
+export const AsideMenu = memo(({ className }: AsideMenuProps) => {
     const [collapsed, setCollapsed] = useState(false);
 
     const toggleCollapsed = () => {
@@ -27,7 +27,7 @@ export const AsideMenu: FC = ({ className }: AsideMenuProps) => {
             )}
             data-testid={'asideMenu'}
         >
-            <div className={classNames(cls.asideUpper, {}, [])}>
+            <div className={classNames(cls.asideUpper, {}, [cls.hideButton])}>
                 <Input placeholder={'Поиск'} />
                 <Button variant={'hideButton'} onClick={toggleCollapsed}>
                     <IconLayout Svg={HideSvg} width={'11px'} height={'19px'} />
@@ -41,4 +41,4 @@ export const AsideMenu: FC = ({ className }: AsideMenuProps) => {
             ></IconLayout>
         </aside>
     );
-};
+});

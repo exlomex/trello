@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 import { LOCAL_STORAGE_THEME_KEY } from '@/shared/const/localstorages';
 import { Theme, ThemeContext } from './ThemeContext';
 

@@ -2,7 +2,7 @@
     height: 100vh;
     width: var(--sidebar-width);
     background-color: var(--aside-bg);
-    padding: 30px 25px;
+    padding: 30px 19px;
     transition: width 0.2s ease;
     display: flex;
     flex-direction: column;
@@ -24,14 +24,13 @@
 
 .collapsed {
     width: var(--sidebar-width-collapsed);
-    padding: 30px 15px;
 
     input {
         opacity: 0;
         display: none;
     }
 
-    svg {
+    .hideButton svg {
         transform: rotate(-180deg);
     }
 
@@ -40,6 +39,6 @@
     }
 
     .settingButton {
-        padding-left: 13px;
+        padding-left: 9px;
     }
 }
