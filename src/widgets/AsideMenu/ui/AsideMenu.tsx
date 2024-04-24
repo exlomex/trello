@@ -14,6 +14,8 @@ interface AsideMenuProps {
 export const AsideMenu = memo(({ className }: AsideMenuProps) => {
     const [collapsed, setCollapsed] = useState(false);
 
+    const [inputValue, setInputValue] = useState('');
+
     const toggleCollapsed = () => {
         setCollapsed((prev) => !prev);
         console.log('toggle collapsed to: ', !collapsed);
@@ -28,7 +30,11 @@ export const AsideMenu = memo(({ className }: AsideMenuProps) => {
             data-testid={'asideMenu'}
         >
             <div className={classNames(cls.asideUpper, {}, [cls.hideButton])}>
-                <Input placeholder={'Поиск'} />
+                <Input
+                    placeholder={'Поиск'}
+                    value={inputValue}
+                    onChange={setInputValue}
+                />
                 <Button variant={'hideButton'} onClick={toggleCollapsed}>
                     <IconLayout Svg={HideSvg} width={'11px'} height={'19px'} />
                 </Button>
