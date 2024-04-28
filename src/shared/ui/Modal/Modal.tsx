@@ -1,7 +1,7 @@
 import { classNames } from '@/shared/lib/classNames';
 import { ReactNode, useCallback, useEffect } from 'react';
 import { Portal } from '@/shared/ui/Portal';
-import { useTheme } from '@/app/providers/lib/useTheme';
+import { useTheme } from '@/app/providers/ThemeProvider/lib/useTheme';
 import cls from './Modal.module.scss';
 
 interface ModalProps {

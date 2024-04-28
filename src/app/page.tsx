@@ -3,12 +3,15 @@
 import React, { useState } from 'react';
 import { AsideMenu } from '@/widgets/AsideMenu';
 import { Modal } from '@/shared/ui/Modal';
+import { Counter } from '@/entities/Counter';
 import cls from './page.module.scss';
 
 export default function Home() {
     const [modalOpen, setModalOpen] = useState(false);
     return (
         <>
+            <Counter />
+
             <AsideMenu />
             <button
                 onClick={() => {

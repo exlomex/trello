@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import { classNames } from '@/shared/lib/classNames';
-import { useTheme } from '@/app/providers/lib/useTheme';
+import { useTheme } from '@/app/providers/ThemeProvider/lib/useTheme';
 
 interface ThemeLayoutProps {
     children: React.ReactNode;

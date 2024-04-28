@@ -33,6 +33,7 @@ export const Button = forwardRef(
             addonLeft,
             disabled,
             fullWidth,
+            ...otherProps
         } = props;
 
         const mods = {
@@ -50,6 +51,7 @@ export const Button = forwardRef(
                 ref={ref}
                 disabled={disabled}
                 onClick={props.onClick}
+                {...otherProps}
             >
                 <div className={cls.addonLeft}>{addonLeft}</div>
                 {children}
