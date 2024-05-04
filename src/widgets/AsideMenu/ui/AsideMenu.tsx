@@ -5,6 +5,9 @@ import { IconLayout } from '@/shared/layouts/IconLayout';
 import { Input } from '@/shared/ui/Input';
 import { Button } from '@/shared/ui/Button/Button';
 import HideSvg from '@/shared/assets/hide.svg';
+import { BoardName } from '@/entities/BoardName';
+import { AllBoardsList } from '@/features/AllBoardsList/ui/AllBoardsList';
+import { Counter } from '@/entities/Counter';
 import cls from './AsideMenu.module.scss';
 
 interface AsideMenuProps {
@@ -29,16 +32,27 @@ export const AsideMenu = memo(({ className }: AsideMenuProps) => {
             )}
             data-testid={'asideMenu'}
         >
-            <div className={classNames(cls.asideUpper, {}, [cls.hideButton])}>
-                <Input
-                    placeholder={'Поиск'}
-                    value={inputValue}
-                    onChange={setInputValue}
-                />
-                <Button variant={'hideButton'} onClick={toggleCollapsed}>
-                    <IconLayout Svg={HideSvg} width={'11px'} height={'19px'} />
-                </Button>
+            <div className={cls.upperWrapper}>
+                <div
+                    className={classNames(cls.asideUpper, {}, [cls.hideButton])}
+                >
+                    <Input
+                        placeholder={'Поиск'}
+                        value={inputValue}
+                        onChange={setInputValue}
+                    />
+                    <Button variant={'hideButton'} onClick={toggleCollapsed}>
+                        <IconLayout
+                            Svg={HideSvg}
+                            width={'11px'}
+                            height={'19px'}
+                        />
+                    </Button>
+                </div>
+
+                <AllBoardsList />
             </div>
+
             <IconLayout
                 Svg={SettingSvg}
                 clickable={true}

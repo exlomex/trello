@@ -20,6 +20,7 @@
 .asideUpper {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 40px;
 }
 
 .collapsed {
@@ -41,4 +42,8 @@
     .settingButton {
         padding-left: 9px;
     }
+}
+
+.asideContent {
+    margin-bottom: 100%;
 }

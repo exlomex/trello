@@ -14,7 +14,6 @@ interface ModalProps {
 
 export const Modal = (props: ModalProps) => {
     const { className, children, isOpen, onClose, isPortal = true } = props;
-
     const mods: Record<string, boolean | undefined> = {
         [cls.opened]: isOpen,
     };
