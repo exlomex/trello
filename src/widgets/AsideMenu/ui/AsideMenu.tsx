@@ -23,6 +23,10 @@ export const AsideMenu = memo(({ className }: AsideMenuProps) => {
         setCollapsed((prev) => !prev);
         console.log('toggle collapsed to: ', !collapsed);
     };
+
+    const collapsedMods = {
+        [cls.collapsedElem]: collapsed,
+    };
     return (
         <aside
             className={classNames(
@@ -50,7 +54,7 @@ export const AsideMenu = memo(({ className }: AsideMenuProps) => {
                     </Button>
                 </div>
 
-                <AllBoardsList />
+                <AllBoardsList className={classNames('', collapsedMods, [])} />
             </div>
 
             <IconLayout

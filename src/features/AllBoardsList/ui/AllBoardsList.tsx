@@ -2,7 +2,6 @@ import { classNames } from '@/shared/lib/classNames';
 import { FC } from 'react';
 import { useAllBords } from '@/features/AllBoardsList/api/AllBoardsApi';
 import { BoardName } from '@/entities/BoardName';
-import { HStack } from '@/shared/ui/Stack';
 import { Skeleton } from '@/shared/ui/Skeleton';
 import cls from './AllBoardsList.module.scss';
 
@@ -10,7 +9,7 @@ interface AllBoardsListProps {
     className?: string;
 }
 
-export const AllBoardsList: FC = ({ className }: AllBoardsListProps) => {
+export const AllBoardsList = ({ className }: AllBoardsListProps) => {
     const { data: boards, isLoading } = useAllBords(null);
     return (
         <div className={classNames(cls.AllBoardsList, {}, [className])}>

@@ -47,3 +47,8 @@
 .asideContent {
     margin-bottom: 100%;
 }
+
+.collapsedElem {
+    transition: all 0.1s ease;
+    opacity: 0;
+}
