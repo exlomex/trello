@@ -17,7 +17,7 @@ interface ClickableIconProps extends IIcon {
 }
 
 type IconProps = NonClickableIconProps | ClickableIconProps;
-export const IconLayout: FC<IconProps> = memo((props) => {
+export const IconLayout = memo((props: IconProps) => {
     const {
         className,
         height = '20px',
@@ -29,9 +29,7 @@ export const IconLayout: FC<IconProps> = memo((props) => {
 
     const layoutIcon = (
         <Svg
-            stroke="#5C5C5C"
-            fill="#5C5C5C"
-            className={cls.Icon}
+            className={classNames(cls.Icon, {}, [className])}
             height={height}
             width={width}
         />

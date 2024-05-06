@@ -6,7 +6,14 @@
     color: var(--text-color);
     align-items: center;
     justify-content: center;
-    transition: background-color 0.3s ease;
+    transition:
+        background-color 0.3s ease,
+        transform 0.3s ease;
+    padding: 8px 10px;
+
+    &:hover {
+        transform: scale(0.98);
+    }
 }
 
 .deleteButton {
@@ -15,6 +22,11 @@
 
 .addButton {
     background-color: var(--add-button);
+    justify-content: start;
+
+    svg {
+        margin-right: 6px;
+    }
 }
 
 .hideButton {

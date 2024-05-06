@@ -1,0 +1,10 @@
+.Column {
+    border-radius: 12px;
+    width: 260px;
+    min-height: 10px;
+    background-color: var(--second-color);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px 0;
+}

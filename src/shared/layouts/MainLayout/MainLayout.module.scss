@@ -1,3 +1,8 @@
 .MainLayout {
     display: flex;
 }
+
+.content {
+    flex-grow: 1;
+    padding: 40px 50px;
+}

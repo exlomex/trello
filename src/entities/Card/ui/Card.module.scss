@@ -1,0 +1,17 @@
+.Card {
+    border-radius: 6px;
+    width: 100%;
+    min-height: 32px;
+    background-color: var(--card);
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 7px 10px;
+    overflow: hidden;
+
+    p {
+        font-size: 0.875em;
+        overflow-wrap: anywhere;
+        line-height: 140%;
+    }
+}

@@ -5,6 +5,8 @@ import {
     forwardRef,
     ReactNode,
 } from 'react';
+import plusSvg from '@/shared/assets/plus.svg';
+import { IconLayout } from '@/shared/layouts/IconLayout';
 import cls from './Button.module.scss';
 
 export type ButtonVariant = 'addButton' | 'deleteButton' | 'hideButton';
@@ -53,6 +55,14 @@ export const Button = forwardRef(
                 onClick={props.onClick}
                 {...otherProps}
             >
+                {variant === 'addButton' && (
+                    <IconLayout
+                        Svg={plusSvg}
+                        width={9}
+                        height={9}
+                        fill={'#940808'}
+                    />
+                )}
                 <div className={cls.addonLeft}>{addonLeft}</div>
                 {children}
                 <div className={cls.addonLeft}>{addonLeft}</div>
