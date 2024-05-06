@@ -2,6 +2,10 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import { StoreProvider } from '@/app/providers/StoreProvider';
 import { Counter } from '@/entities/Counter';
 
+jest.mock('../../../shared/layouts/IconLayout', () => ({
+    IconLayout: jest.fn(),
+}));
+
 describe('Counter', () => {
     test('defaultStateTest', () => {
         render(
