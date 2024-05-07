@@ -3,9 +3,9 @@ import { BoardCardsTypes } from '../model/types/BoardCardsTypes';
 
 const AllBoardsApi = rtkApi.injectEndpoints({
     endpoints: (build) => ({
-        getAllBoardColumns: build.query<BoardCardsTypes[], null>({
-            query: () => ({
-                url: '/columns/?_embed=cards&boardId=1',
+        getAllBoardColumns: build.query<BoardCardsTypes[], { id: string }>({
+            query: ({ id }) => ({
+                url: `/columns/?_embed=cards&boardId=${id}`,
             }),
         }),
     }),

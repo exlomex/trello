@@ -2,6 +2,8 @@ import { ColumnLayout } from '@/entities/Column';
 import { HStack } from '@/shared/ui/Stack';
 import { useGetAllBoardColumns } from '@/features/BoardCards/api/BoardCardsApi';
 import { Button } from '@/shared/ui/Button';
+import { useEffect } from 'react';
+import { useParams, useSearchParams } from 'next/navigation';
 import cls from './BoardCards.module.scss';
 
 interface BoardCardsProps {
@@ -9,8 +11,12 @@ interface BoardCardsProps {
 }
 
 export const BoardCards = (props: BoardCardsProps) => {
+    const params = useParams<{ id: string }>();
+
     const { className } = props;
-    const { data: columns, isLoading } = useGetAllBoardColumns(null);
+    const { data: columns, isLoading } = useGetAllBoardColumns({
+        id: params.id,
+    });
     return (
         <HStack gap={'24'} wrap={'nowrap'} align={'start'}>
             {columns &&

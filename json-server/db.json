@@ -32,6 +32,11 @@
       "id": "3",
       "column_title": "third column",
       "boardId": "1"
+    },
+    {
+      "id": "4",
+      "column_title": "card_hzhz",
+      "boardId": "2"
     }
   ],
   "cards": [

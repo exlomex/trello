@@ -1,8 +1,9 @@
 import { classNames } from '@/shared/lib/classNames';
-import { FC } from 'react';
+import { FC, useCallback } from 'react';
 import { useAllBords } from '@/features/AllBoardsList/api/AllBoardsApi';
 import { BoardName } from '@/entities/BoardName';
 import { Skeleton } from '@/shared/ui/Skeleton';
+import { useRouter } from 'next/navigation';
 import cls from './AllBoardsList.module.scss';
 
 interface AllBoardsListProps {
@@ -11,6 +12,16 @@ interface AllBoardsListProps {
 
 export const AllBoardsList = ({ className }: AllBoardsListProps) => {
     const { data: boards, isLoading } = useAllBords(null);
+    const router = useRouter();
+
+    const onChangePage = useCallback(
+        (id: string) => {
+            const originalPath = window.location.origin;
+            router.push(`${originalPath}/BoardPage/${id}`);
+        },
+        [router],
+    );
+
     return (
         <div className={classNames(cls.AllBoardsList, {}, [className])}>
             <h2 className={cls.AllBoardsTitle}>Все доски</h2>
@@ -46,7 +57,12 @@ export const AllBoardsList = ({ className }: AllBoardsListProps) => {
 
             {boards &&
                 boards.map((board) => (
-                    <BoardName key={board.id}>{board.board_title}</BoardName>
+                    <BoardName
+                        key={board.id}
+                        onClick={() => onChangePage(board.id)}
+                    >
+                        {board.board_title}
+                    </BoardName>
                 ))}
         </div>
     );
