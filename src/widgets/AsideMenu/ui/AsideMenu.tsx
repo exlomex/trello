@@ -5,9 +5,7 @@ import { IconLayout } from '@/shared/layouts/IconLayout';
 import { Input } from '@/shared/ui/Input';
 import { Button } from '@/shared/ui/Button/Button';
 import HideSvg from '@/shared/assets/hide.svg';
-import { BoardName } from '@/entities/BoardName';
 import { AllBoardsList } from '@/features/AllBoardsList/ui/AllBoardsList';
-import { Counter } from '@/entities/Counter';
 import cls from './AsideMenu.module.scss';
 
 interface AsideMenuProps {
@@ -55,6 +53,16 @@ export const AsideMenu = memo(({ className }: AsideMenuProps) => {
                 </div>
 
                 <AllBoardsList className={classNames('', collapsedMods, [])} />
+                <Button
+                    variant={'createButton'}
+                    className={classNames(
+                        '',
+                        { [cls.collapsedElem]: collapsed },
+                        [],
+                    )}
+                >
+                    Создать доску
+                </Button>
             </div>
 
             <IconLayout

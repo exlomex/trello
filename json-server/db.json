@@ -1,20 +1,20 @@
 {
   "boards": [
     {
-      "id": "1",
-      "board_title": "1 board"
+      "board_title": "card_hzhz",
+      "id": "1"
     },
     {
-      "id": "2",
-      "board_title": "2 board"
+      "id": "61b9",
+      "board_title": "card_hzhz"
     },
     {
-      "id": "3",
-      "board_title": "3 board"
+      "id": "ae28",
+      "board_title": "sdf"
     },
     {
-      "id": "4",
-      "board_title": "4 board"
+      "id": "7285",
+      "board_title": "fsfs"
     }
   ],
   "columns": [
@@ -36,7 +36,7 @@
     {
       "id": "4",
       "column_title": "card_hzhz",
-      "boardId": "2"
+      "boardId": null
     }
   ],
   "cards": [

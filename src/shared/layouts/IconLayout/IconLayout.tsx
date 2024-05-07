@@ -29,7 +29,7 @@ export const IconLayout = memo((props: IconProps) => {
 
     const layoutIcon = (
         <Svg
-            className={classNames(cls.Icon, {}, [className])}
+            className={classNames(cls.Icon, {}, [])}
             height={height}
             width={width}
         />

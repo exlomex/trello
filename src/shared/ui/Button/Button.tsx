@@ -6,10 +6,15 @@ import {
     ReactNode,
 } from 'react';
 import plusSvg from '@/shared/assets/plus.svg';
+import createSvg from '@/shared/assets/create.svg';
 import { IconLayout } from '@/shared/layouts/IconLayout';
 import cls from './Button.module.scss';
 
-export type ButtonVariant = 'addButton' | 'deleteButton' | 'hideButton';
+export type ButtonVariant =
+    | 'addButton'
+    | 'deleteButton'
+    | 'hideButton'
+    | 'createButton';
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     className?: string;
     // содержимое
@@ -39,7 +44,7 @@ export const Button = forwardRef(
         } = props;
 
         const mods = {
-            [cls.withAddon]: Boolean(addonLeft) || Boolean(addonRight),
+            // [cls.withAddon]: Boolean(addonLeft) || Boolean(addonRight),
             [cls.disabled]: disabled,
             [cls.fullWidth]: fullWidth,
         };
@@ -63,9 +68,17 @@ export const Button = forwardRef(
                         fill={'#940808'}
                     />
                 )}
-                <div className={cls.addonLeft}>{addonLeft}</div>
+                {variant === 'createButton' && (
+                    <IconLayout
+                        Svg={createSvg}
+                        width={33}
+                        height={33}
+                        fill={'#940808'}
+                    />
+                )}
+                {/* <div className={cls.addonLeft}>{addonLeft}</div> */}
                 {children}
-                <div className={cls.addonLeft}>{addonLeft}</div>
+                {/* <div className={cls.addonLeft}>{addonLeft}</div> */}
             </button>
         );
     },

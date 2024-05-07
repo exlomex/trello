@@ -10,6 +10,7 @@
         background-color 0.3s ease,
         transform 0.3s ease;
     padding: 8px 10px;
+    white-space: nowrap;
 
     &:hover {
         transform: scale(0.98);
@@ -41,6 +42,28 @@
 
     &:hover {
         background-color: var(--input-active-color);
+    }
+}
+
+.createButton {
+    background-color: transparent;
+    justify-content: start;
+    min-width: 200px;
+    padding: 0;
+    font-size: 1.1em;
+
+    svg {
+        margin-right: 15px;
+
+        path {
+            transition: all 0.3s ease;
+        }
+    }
+
+    &:hover {
+        svg path {
+            fill: var(--second-color);
+        }
     }
 }
 
