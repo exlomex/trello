@@ -6,6 +6,14 @@ jest.mock('../../../shared/layouts/IconLayout', () => ({
     IconLayout: jest.fn(),
 }));
 
+jest.mock('next/navigation', () => ({
+    useRouter() {
+        return {
+            prefetch: () => null,
+        };
+    },
+}));
+
 describe('sidebar', () => {
     test('instanceSidebar', () => {
         render(
