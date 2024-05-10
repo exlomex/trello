@@ -43,7 +43,12 @@ export const AsideMenu = memo(({ className }: AsideMenuProps) => {
                         value={inputValue}
                         onChange={setInputValue}
                     />
-                    <Button variant={'hideButton'} onClick={toggleCollapsed}>
+                    <Button
+                        variant={'IconButton'}
+                        borderRadius={'12'}
+                        size={'l'}
+                        onClick={toggleCollapsed}
+                    >
                         <IconLayout
                             Svg={HideSvg}
                             width={'11px'}
@@ -54,7 +59,7 @@ export const AsideMenu = memo(({ className }: AsideMenuProps) => {
 
                 <AllBoardsList className={classNames('', collapsedMods, [])} />
                 <Button
-                    variant={'createButton'}
+                    variant={'LeftAddonCreateButton'}
                     className={classNames(
                         '',
                         { [cls.collapsedElem]: collapsed },

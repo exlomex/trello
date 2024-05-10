@@ -30,7 +30,9 @@ export const ColumnLayout = (props: ColumnProps) => {
                     <Card key={card.id} cardDescription={card.card_text} />
                 ))}
 
-            <Button fullWidth={true}>Добавить карточку</Button>
+            <Button fullWidth={true} variant={'LeftAddonAddButton'}>
+                Добавить карточку
+            </Button>
         </div>
     );
 };

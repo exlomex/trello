@@ -1,4 +1,4 @@
-import React, { FC, memo, ReactNode, SVGProps } from 'react';
+import React, { memo, SVGProps } from 'react';
 import { classNames } from '@/shared/lib/classNames';
 import cls from './IconLayout.module.scss';
 

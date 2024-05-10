@@ -27,7 +27,7 @@ export const BoardCards = (props: BoardCardsProps) => {
                         cardsData={column.cards}
                     ></ColumnLayout>
                 ))}
-            <Button className={cls.BoardButton}>
+            <Button className={cls.BoardButton} variant={'LeftAddonAddButton'}>
                 Добавить еще одну колонку
             </Button>
         </HStack>

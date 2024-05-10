@@ -1,40 +1,59 @@
+// Main classes
 .Button {
     display: flex;
-    border-radius: 6px;
-    width: 120px;
-    height: 32px;
-    color: var(--text-color);
     align-items: center;
     justify-content: center;
+    color: var(--text-color);
+    padding: 8px 10px;
+    white-space: nowrap;
     transition:
         background-color 0.3s ease,
         transform 0.3s ease;
-    padding: 8px 10px;
-    white-space: nowrap;
 
     &:hover {
         transform: scale(0.98);
     }
 }
 
-.deleteButton {
-    background-color: var(--delete-button);
+// Mods
+.border6 {
+    border-radius: 6px;
 }
 
-.addButton {
-    background-color: var(--add-button);
-    justify-content: start;
-
-    svg {
-        margin-right: 6px;
-    }
-}
-
-.hideButton {
-    background-color: var(--second-color);
+.border12 {
     border-radius: 12px;
-    width: 42px;
+}
+
+.border16 {
+    border-radius: 16px;
+}
+
+.border24 {
+    border-radius: 24px;
+}
+
+.fullWidth {
+    width: 100%;
+}
+
+.m {
+    height: 32px;
+}
+
+.l {
     height: 42px;
+}
+
+// Variants
+
+.DefaultButton {
+    background-color: var(--add-button);
+    min-width: 135px;
+}
+
+.IconButton {
+    background-color: var(--second-color);
+    aspect-ratio: 1 / 1;
 
     svg {
         transform: translateX(-1px);
@@ -45,7 +64,7 @@
     }
 }
 
-.createButton {
+.LeftAddonCreateButton {
     background-color: transparent;
     justify-content: start;
     min-width: 200px;
@@ -67,6 +86,11 @@
     }
 }
 
-.fullWidth {
-    width: 100%;
+.LeftAddonAddButton {
+    background-color: var(--add-button);
+    justify-content: start;
+
+    svg {
+        margin-right: 6px;
+    }
 }

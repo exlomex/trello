@@ -11,23 +11,34 @@ import { IconLayout } from '@/shared/layouts/IconLayout';
 import cls from './Button.module.scss';
 
 export type ButtonVariant =
-    | 'addButton'
-    | 'deleteButton'
-    | 'hideButton'
-    | 'createButton';
+    | 'DefaultButton'
+    | 'IconButton'
+    | 'LeftAddonCreateButton'
+    | 'LeftAddonAddButton';
+
+export type ButtonBorderRadius = '6' | '12' | '16' | '24';
+export type ButtonSize = 'm' | 'l';
+
+const ButtonBorderClasses: Record<ButtonBorderRadius, string> = {
+    6: cls.border6,
+    12: cls.border12,
+    16: cls.border16,
+    24: cls.border24,
+};
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     className?: string;
     // содержимое
     children?: ReactNode;
-    // вариант
+    // вариант кнопки
     variant?: ButtonVariant;
-    // аддоны (svg and etc..)
-    addonLeft?: ReactNode;
-    addonRight?: ReactNode;
-    // disabled
+    // размер кнопки
+    size?: ButtonSize;
+    // disabled flag
     disabled?: boolean;
     // full width (100%)
     fullWidth?: boolean;
+    // borderRadius
+    borderRadius?: ButtonBorderRadius;
 }
 
 export const Button = forwardRef(
@@ -35,32 +46,36 @@ export const Button = forwardRef(
         const {
             className,
             children,
-            variant = 'addButton',
-            addonRight,
-            addonLeft,
+            variant = 'DefaultButton',
             disabled,
             fullWidth,
+            borderRadius = '6',
+            size = 'm',
             ...otherProps
         } = props;
 
         const mods = {
-            // [cls.withAddon]: Boolean(addonLeft) || Boolean(addonRight),
             [cls.disabled]: disabled,
             [cls.fullWidth]: fullWidth,
         };
 
+        const classes = [
+            className,
+            cls[variant],
+            ButtonBorderClasses[borderRadius],
+            cls[size],
+        ];
+
         return (
             <button
-                className={classNames(cls.Button, mods, [
-                    className,
-                    cls[variant],
-                ])}
+                className={classNames(cls.Button, mods, classes)}
                 ref={ref}
                 disabled={disabled}
                 onClick={props.onClick}
                 {...otherProps}
             >
-                {variant === 'addButton' && (
+                {/* Addons */}
+                {variant === 'LeftAddonAddButton' && (
                     <IconLayout
                         Svg={plusSvg}
                         width={9}
@@ -68,7 +83,7 @@ export const Button = forwardRef(
                         fill={'#940808'}
                     />
                 )}
-                {variant === 'createButton' && (
+                {variant === 'LeftAddonCreateButton' && (
                     <IconLayout
                         Svg={createSvg}
                         width={33}
@@ -76,9 +91,8 @@ export const Button = forwardRef(
                         fill={'#940808'}
                     />
                 )}
-                {/* <div className={cls.addonLeft}>{addonLeft}</div> */}
+
                 {children}
-                {/* <div className={cls.addonLeft}>{addonLeft}</div> */}
             </button>
         );
     },
