@@ -29,13 +29,13 @@ export const addButton: Story = {
 export const deleteButton: Story = {
     args: {
         children: 'удалить доску',
-        variant: 'deleteButton',
+        variant: 'DefaultButton',
     },
 };
 
 export const hideButton: Story = {
     args: {
         children: <HideIcon />,
-        variant: 'hideButton',
+        variant: 'IconButton',
     },
 };

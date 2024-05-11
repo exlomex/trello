@@ -6,6 +6,7 @@ import { Input } from '@/shared/ui/Input';
 import { Button } from '@/shared/ui/Button/Button';
 import HideSvg from '@/shared/assets/hide.svg';
 import { AllBoardsList } from '@/features/AllBoardsList/ui/AllBoardsList';
+import { AddNewCard } from '@/features/AddNewCard/ui/AddNewCard';
 import cls from './AsideMenu.module.scss';
 
 interface AsideMenuProps {

@@ -6,6 +6,7 @@ type HtmlInputProps = Omit<
     InputHTMLAttributes<HTMLInputElement>,
     'value' | 'onChange'
 >;
+
 interface InputProps extends HtmlInputProps {
     className?: string;
     value?: string;

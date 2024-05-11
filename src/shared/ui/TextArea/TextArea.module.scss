@@ -1,0 +1,28 @@
+.TextArea {
+    background-color: var(--add-button);
+    padding: 10px 14px;
+    color: var(--text-color);
+    font-size: 0.9em;
+    line-height: 130%;
+    font-weight: 300;
+    transition:
+        background-color 0.3s ease,
+        height 3s ease;
+    width: 100%;
+    min-height: 75px;
+    border-radius: 6px;
+    resize: none;
+    overflow: hidden;
+
+    &::placeholder {
+        color: var(--search-placeholder-color);
+    }
+
+    &:focus {
+        background-color: var(--input-active-color);
+    }
+
+    &:hover {
+        background-color: var(--input-active-color);
+    }
+}
