@@ -4,7 +4,7 @@ import { HStack } from '@/shared/ui/Stack';
 import { Card } from '@/entities/Card';
 import { CardsTypes } from '@/features/BoardCards';
 import { Button } from '@/shared/ui/Button';
-import { AddNewCard } from '@/features/AddNewCard/ui/AddNewCard';
+import { AddNewCard } from '@/features/AddNewCard';
 import { ColumnTitle } from '../ColumnTitle/ColumnTitle';
 import cls from './ColumnLayout.module.scss';
 

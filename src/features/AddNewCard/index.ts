@@ -1,1 +1,1 @@
-export { addNewCard } from './ui/AddNewCard';
+export { AddNewCard } from './ui/AddNewCard';
