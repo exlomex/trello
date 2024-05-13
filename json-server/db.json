@@ -27,16 +27,6 @@
       "id": "2",
       "column_title": "second column",
       "boardId": "1"
-    },
-    {
-      "id": "3",
-      "column_title": "third column",
-      "boardId": "1"
-    },
-    {
-      "id": "4",
-      "column_title": "card_hzhz",
-      "boardId": null
     }
   ],
   "cards": [
@@ -54,51 +44,6 @@
       "id": "1e3b",
       "columnId": "1",
       "card_text": "fdgdgd"
-    },
-    {
-      "id": "2428",
-      "columnId": "1",
-      "card_text": "ок"
-    },
-    {
-      "id": "76c0",
-      "columnId": "2",
-      "card_text": "пвапвпвпв"
-    },
-    {
-      "id": "3e4a",
-      "columnId": "3",
-      "card_text": "пвапвпв"
-    },
-    {
-      "id": "a42e",
-      "columnId": "1",
-      "card_text": "sfsfs"
-    },
-    {
-      "id": "b676",
-      "columnId": "1",
-      "card_text": "sfsfs"
-    },
-    {
-      "id": "0be5",
-      "columnId": "1",
-      "card_text": "sfsfs"
-    },
-    {
-      "id": "6981",
-      "columnId": "1",
-      "card_text": "sfsfs"
-    },
-    {
-      "id": "1e3b",
-      "columnId": "3",
-      "card_text": "vbcbcbc"
-    },
-    {
-      "id": "83db",
-      "columnId": "2",
-      "card_text": "bcbcbcbcb"
     }
   ]
 }

@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { classNames } from '@/shared/lib/classNames';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import { useTheme } from '@/app/providers/ThemeProvider/lib/useTheme';
 
 interface ThemeLayoutProps {

@@ -1,4 +1,4 @@
-import { classNames } from '@/shared/lib/classNames';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo, useState } from 'react';
 import SettingSvg from '@/shared/assets/settings.svg';
 import { IconLayout } from '@/shared/layouts/IconLayout';

@@ -1,5 +1,5 @@
 import React, { memo, SVGProps } from 'react';
-import { classNames } from '@/shared/lib/classNames';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './IconLayout.module.scss';
 
 interface IIcon extends SVGProps<SVGAElement> {

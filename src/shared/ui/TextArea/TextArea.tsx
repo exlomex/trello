@@ -1,5 +1,5 @@
 import React, { memo, TextareaHTMLAttributes } from 'react';
-import { classNames } from '@/shared/lib/classNames';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './TextArea.module.scss';
 
 type HtmlTextAreaProps = Omit<

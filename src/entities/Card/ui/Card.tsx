@@ -1,9 +1,9 @@
-import { classNames } from '@/shared/lib/classNames';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './Card.module.scss';
 
 interface CardProps {
     className?: string;
-    cardDescription: string;
+    cardDescription?: string;
 }
 
 export const Card = (props: CardProps) => {

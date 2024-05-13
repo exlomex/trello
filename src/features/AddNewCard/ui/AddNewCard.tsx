@@ -1,4 +1,4 @@
-import { classNames } from '@/shared/lib/classNames';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import { TextArea } from '@/shared/ui/TextArea';
 import {
     ForwardedRef,
@@ -13,6 +13,7 @@ import CloseIcon from '@/shared/assets/close.svg';
 import { IconLayout } from '@/shared/layouts/IconLayout';
 import { useCreateNewCard } from '@/features/AddNewCard/api/AddNewCardApi';
 import { CardsTypes } from '@/features/BoardCards';
+import { useOutsideDivHandler } from '@/shared/lib/hooks/useOutsideDivHandler/useOutsideDivHandler';
 import cls from './AddNewCard.module.scss';
 
 interface AddNewCardProps {
@@ -43,21 +44,7 @@ export const AddNewCard = forwardRef(
             await createPost(requestBody as CardsTypes);
         };
 
-        const handleClick = useCallback(
-            (e: MouseEvent) => {
-                if (ref && 'current' in ref && ref.current) {
-                    if (ref && !ref.current.contains(e.target as Node)) {
-                        setIsAddForm(false);
-                    }
-                }
-            },
-            [ref],
-        );
-
-        useEffect(() => {
-            document.addEventListener('mousedown', handleClick);
-            return () => document.removeEventListener('mousedown', handleClick);
-        }, [createPost, handleClick]);
+        useOutsideDivHandler(ref, setIsAddForm);
         return (
             <div className={classNames(cls.AddNewCard, {}, [className])}>
                 {!isAddForm ? (

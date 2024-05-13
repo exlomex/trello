@@ -2,10 +2,11 @@ import { ColumnLayout } from '@/entities/Column';
 import { HStack } from '@/shared/ui/Stack';
 import { useGetAllBoardColumns } from '@/features/BoardCards/api/BoardCardsApi';
 import { Button } from '@/shared/ui/Button';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useParams, useSearchParams } from 'next/navigation';
 import { Skeleton } from '@/shared/ui/Skeleton';
 import { AddNewCard } from '@/features/AddNewCard/ui/AddNewCard';
+import { AddNewColumn } from '@/features/AddNewColumn';
 import cls from './BoardCards.module.scss';
 
 interface BoardCardsProps {
@@ -14,7 +15,6 @@ interface BoardCardsProps {
 
 export const BoardCards = (props: BoardCardsProps) => {
     const params = useParams<{ id: string }>();
-
     const { className } = props;
     const { data: columns, isLoading } = useGetAllBoardColumns({
         id: params.id,
@@ -54,9 +54,7 @@ export const BoardCards = (props: BoardCardsProps) => {
                         columnId={column.id}
                     ></ColumnLayout>
                 ))}
-            <Button className={cls.BoardButton} variant={'LeftAddonAddButton'}>
-                Добавить еще одну колонку
-            </Button>
+            <AddNewColumn boardId={params.id} />
         </HStack>
     );
 };

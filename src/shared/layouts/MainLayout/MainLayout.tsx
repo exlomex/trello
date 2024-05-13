@@ -1,4 +1,4 @@
-import { classNames } from '@/shared/lib/classNames';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import { ReactElement } from 'react';
 import cls from './MainLayout.module.scss';
 
