@@ -18,7 +18,6 @@ import { Card } from '@/entities/Card';
 import { ColumnLayout } from '@/entities/Column';
 import { useCreateNewColumn } from '@/features/AddNewColumn/api/AddNewColumnApi';
 import { BoardColumnsType } from '@/features/AddNewColumn/model/types/BoardColumnsType';
-import { CardsTypes } from '@/features/BoardCards';
 import cls from './AddNewColumn.module.scss';
 
 interface AddNewColumnProps {
@@ -62,6 +61,7 @@ export const AddNewColumn = (props: AddNewColumnProps) => {
                     Добавить еще одну колонку
                 </Button>
             ) : (
+                // @ts-ignore
                 <ColumnLayout className={cls.column}>
                     <HStack gap={'16'}>
                         <TextArea
