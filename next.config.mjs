@@ -3,6 +3,7 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     webpack: (config) => {
+
         const fileLoaderRule = config.module.rules.find((rule) =>
             rule.test?.test?.('.svg'),
         )
@@ -21,7 +22,8 @@ const nextConfig = {
             },
         )
         return config
-    }
+    },
+    // experimental: {'esmExternals': false}
     // webpack: (config, { dev }) => {
     //     config.module.rules.push({
     //         test: /\.s[ac]ss$/i,

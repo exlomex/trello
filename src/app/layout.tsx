@@ -7,6 +7,8 @@ import ThemeProvider from '@/app/providers/ThemeProvider/ui/ThemeProvider';
 import { ThemeLayout } from '@/shared/layouts/ThemeLayout/ThemeLayout';
 import { Inter } from 'next/font/google';
 import { StoreProvider } from '@/app/providers/StoreProvider';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
 
 const inter = Inter({
     subsets: ['latin'],
@@ -17,15 +19,15 @@ export default function RootLayout({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
-    const redirect = useRouter();
-
     return (
         <html lang="en">
             <body className={`app ${inter.className}`}>
                 <StoreProvider>
-                    <ThemeProvider>
-                        <ThemeLayout>{children}</ThemeLayout>
-                    </ThemeProvider>
+                    <DndProvider backend={HTML5Backend}>
+                        <ThemeProvider>
+                            <ThemeLayout>{children}</ThemeLayout>
+                        </ThemeProvider>
+                    </DndProvider>
                 </StoreProvider>
             </body>
         </html>

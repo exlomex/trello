@@ -7,4 +7,17 @@
     display: flex;
     flex-direction: column;
     gap: 12px 0;
+    transition: background-color 0.2s ease;
+}
+
+.isDropping {
+    background-color: var(--input-active-color);
+}
+
+.isDragging {
+    opacity: 0.4;
+
+    div {
+        opacity: 0;
+    }
 }

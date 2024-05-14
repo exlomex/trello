@@ -13,12 +13,12 @@ import { Button } from '@/shared/ui/Button';
 import CloseIcon from '@/shared/assets/close.svg';
 import { IconLayout } from '@/shared/layouts/IconLayout';
 import { useCreateNewCard } from '@/features/AddNewCard/api/AddNewCardApi';
-import { CardsTypes } from '@/features/BoardCards';
 import { useOutsideDivHandler } from '@/shared/lib/hooks/useOutsideDivHandler/useOutsideDivHandler';
 import { Card } from '@/entities/Card';
 import { ColumnLayout } from '@/entities/Column';
 import { useCreateNewColumn } from '@/features/AddNewColumn/api/AddNewColumnApi';
 import { BoardColumnsType } from '@/features/AddNewColumn/model/types/BoardColumnsType';
+import { CardsTypes } from '@/features/BoardCards';
 import cls from './AddNewColumn.module.scss';
 
 interface AddNewColumnProps {

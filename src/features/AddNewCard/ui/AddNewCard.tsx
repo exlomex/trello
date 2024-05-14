@@ -12,8 +12,8 @@ import { Button } from '@/shared/ui/Button';
 import CloseIcon from '@/shared/assets/close.svg';
 import { IconLayout } from '@/shared/layouts/IconLayout';
 import { useCreateNewCard } from '@/features/AddNewCard/api/AddNewCardApi';
-import { CardsTypes } from '@/features/BoardCards';
 import { useOutsideDivHandler } from '@/shared/lib/hooks/useOutsideDivHandler/useOutsideDivHandler';
+import { CardsTypes } from '@/widgets/BoardCards';
 import cls from './AddNewCard.module.scss';
 
 interface AddNewCardProps {
@@ -46,7 +46,14 @@ export const AddNewCard = forwardRef(
 
         useOutsideDivHandler(ref, setIsAddForm);
         return (
-            <div className={classNames(cls.AddNewCard, {}, [className])}>
+            <div
+                className={classNames(cls.AddNewCard, {}, [className])}
+                draggable
+                onDragStart={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                }}
+            >
                 {!isAddForm ? (
                     <Button
                         fullWidth={true}

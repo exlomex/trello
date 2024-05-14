@@ -1,5 +1,5 @@
 import { rtkApi } from '@/shared/api/rtkApi';
-import { CardsTypes } from '@/features/BoardCards';
+import { CardsTypes } from '@/widgets/BoardCards';
 
 const AddNewCardApi = rtkApi.injectEndpoints({
     endpoints: (build) => ({

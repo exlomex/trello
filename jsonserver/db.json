@@ -1,0 +1,56 @@
+{
+  "boards": [
+    {
+      "board_title": "card_hzhz",
+      "id": "1"
+    },
+    {
+      "id": "7285",
+      "board_title": "fsfs"
+    }
+  ],
+  "columns": [
+    {
+      "boardId": "7285",
+      "column_title": "fghfhhfhf",
+      "id": 5
+    },
+    {
+      "boardId": "7285",
+      "column_title": "fghfh",
+      "id": 4
+    },
+    {
+      "boardId": "1",
+      "column_title": "fdsfsfsfds",
+      "id": 1
+    },
+    {
+      "boardId": "1",
+      "column_title": "hghfhf",
+      "id": 2
+    },
+    {
+      "boardId": "1",
+      "column_title": "hghfhfhgf",
+      "id": 3
+    }
+  ],
+  "cards": [
+    {
+      "columnId": 1,
+      "card_text": "hr\n",
+      "id": 1
+    },
+    {
+      "columnId": 1,
+      "card_text": "hr\nhrhr",
+      "id": 2
+    },
+    {
+      "columnId": 1,
+      "card_text": "hygfgfhg",
+      "id": 3
+    }
+  ]
+}
