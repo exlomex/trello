@@ -6,51 +6,51 @@
     },
     {
       "id": "7285",
-      "board_title": "fsfs"
+      "board_title": "waitwhat"
     }
   ],
   "columns": [
     {
-      "boardId": "7285",
-      "column_title": "fghfhhfhf",
-      "id": 5
+      "boardId": "1",
+      "column_title": "1 column",
+      "id": 1
     },
     {
-      "boardId": "7285",
-      "column_title": "fghfh",
+      "boardId": "1",
+      "column_title": "2 column",
+      "id": 2
+    },
+    {
+      "boardId": "1",
+      "column_title": "аыаыаы",
+      "id": 3
+    },
+    {
+      "boardId": "1",
+      "column_title": "аыаыаы",
       "id": 4
     },
     {
       "boardId": "1",
-      "column_title": "fdsfsfsfds",
-      "id": 1
-    },
-    {
-      "boardId": "1",
-      "column_title": "hghfhf",
-      "id": 2
-    },
-    {
-      "boardId": "1",
-      "column_title": "hghfhfhgf",
-      "id": 3
+      "column_title": "апв",
+      "id": 5
     }
   ],
   "cards": [
     {
-      "columnId": 1,
-      "card_text": "hr\n",
-      "id": 1
+      "columnId": 2,
+      "card_text": "xftgyh",
+      "id": 7
     },
     {
-      "columnId": 1,
-      "card_text": "hr\nhrhr",
-      "id": 2
-    },
-    {
-      "columnId": 1,
-      "card_text": "hygfgfhg",
+      "columnId": 2,
+      "card_text": "3",
       "id": 3
+    },
+    {
+      "columnId": 2,
+      "card_text": "2",
+      "id": 2
     }
   ]
 }

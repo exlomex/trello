@@ -57,16 +57,25 @@ app.put('/update-columns', (req, res) => {
 
 app.put('/update-cards', (req, res) => {
     try {
-        const newColumns = req.body;
+        const allColumns = req.body;
+        let newCards = [];
 
-        if (!Array.isArray(newColumns)) {
+        allColumns.forEach(column => {
+            // Проверяем, есть ли у текущего элемента свойство cards
+            if (column.cards) {
+                // Если есть, добавляем карточки этой колонки в общий массив карточек
+                newCards = [...newCards, ...column.cards];
+            }
+        });
+
+        if (!Array.isArray(newCards)) {
             throw new Error('Данные должны быть представлены в виде массива');
         }
 
         const currentState = router.db.getState();
-        currentState.cards = newColumns;
+        currentState.cards = newCards;
 
-        router.db.set('cards', newColumns).write();
+        router.db.set('cards', newCards).write();
 
         res.sendStatus(200);
     } catch (error) {

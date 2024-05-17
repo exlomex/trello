@@ -9,6 +9,7 @@ import { Inter } from 'next/font/google';
 import { StoreProvider } from '@/app/providers/StoreProvider';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
+import { DragDropContext } from 'react-beautiful-dnd';
 
 const inter = Inter({
     subsets: ['latin'],

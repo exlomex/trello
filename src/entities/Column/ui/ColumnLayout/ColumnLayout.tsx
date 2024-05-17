@@ -1,17 +1,17 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { ReactElement, useRef } from 'react';
+import { ReactElement, useEffect, useState } from 'react';
 import { HStack } from '@/shared/ui/Stack';
 import { Card } from '@/entities/Card';
 import { AddNewCard } from '@/features/AddNewCard';
 import { ColumnTitle } from '@/entities/Column';
-import { BoardCardsTypes, CardsTypes } from '@/widgets/BoardCards';
-import { useDrag, useDrop } from 'react-dnd';
-import { useUpdateColumns } from '@/entities/Column/api/updateColumnsApi';
-import { useCreateNewCard } from '@/features/AddNewCard/api/AddNewCardApi';
-import { BoardColumnsType } from '@/features/AddNewColumn/model/types/BoardColumnsType';
+import { useSelector } from 'react-redux';
+import { selectColumns } from '@/widgets/BoardCards/model/slice/BoardColumnsCards';
+import { Droppable, Draggable } from 'react-beautiful-dnd';
+import { CardsTypes } from '@/widgets/BoardCards';
 import cls from './ColumnLayout.module.scss';
 
 export type ColumnType = 'view' | 'delete';
+
 interface ColumnProps {
     className?: string;
     type?: ColumnType;
@@ -20,13 +20,6 @@ interface ColumnProps {
     cardsData?: CardsTypes[];
     columnId?: string;
     index: number;
-    moveCard: (id: number, hoverIndex: number) => void;
-    columnState: any;
-}
-
-export interface XYCoord {
-    x: number;
-    y: number;
 }
 
 export const ColumnLayout = (props: ColumnProps) => {
@@ -38,95 +31,28 @@ export const ColumnLayout = (props: ColumnProps) => {
         cardsData,
         columnId,
         index,
-        moveCard,
-        columnState,
     } = props;
 
-    const formRef = useRef<HTMLDivElement>(null);
+    const columnsFromRedux = useSelector(selectColumns);
+    const [columns, setColumns] = useState(columnsFromRedux);
 
-    const [updateColumns, { isLoading }] = useUpdateColumns();
+    useEffect(() => {
+        setColumns(columnsFromRedux);
+    }, [columnsFromRedux]);
 
-    const [{ handlerId, isDropping }, drop] = useDrop({
-        accept: 'column',
-        collect(monitor) {
-            return {
-                handlerId: monitor.getHandlerId(),
-                isDropping: monitor.isOver(),
-            };
-        },
-        hover(item: any, monitor) {
-            if (!formRef.current) {
-                return;
-            }
-            const dragIndex = item.index;
-            const hoverIndex = index;
+    const getItemStyle = (isDragging: any, draggableStyle: any) => ({
+        // some basic styles to make the items look a bit nicer
+        userSelect: 'none',
 
-            if (dragIndex === hoverIndex) {
-                return;
-            }
+        // change background colour if dragging
+        background: isDragging ? 'lightgreen' : 'none',
 
-            // // Determine rectangle on screen
-            // const hoverBoundingRect = formRef.current?.getBoundingClientRect();
-            //
-            // // Get vertical middle
-            // const hoverMiddleY =
-            //     (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2;
-            //
-            // // Determine mouse position
-            // const clientOffset = monitor.getClientOffset();
-            //
-            // // Get pixels to the top
-            // const hoverClientY =
-            //     (clientOffset as XYCoord).y - hoverBoundingRect.top;
-
-            // Only perform the move when the mouse has crossed half of the items height
-            // When dragging downwards, only move when the cursor is below 50%
-            // When dragging upwards, only move when the cursor is above 50%
-
-            // // Dragging downwards
-            // if (dragIndex < hoverIndex && hoverClientY < hoverMiddleY) {
-            //     return;
-            // }
-            //
-            // // Dragging upwards
-            // if (dragIndex > hoverIndex && hoverClientY > hoverMiddleY) {
-            //     return;
-            // }
-
-            // Time to actually perform the action
-            moveCard(dragIndex, hoverIndex);
-
-            // Note: we're mutating the monitor item here!
-            // Generally it's better to avoid mutations,
-            // but it's good here for the sake of performance
-            // to avoid expensive index searches.
-            item.index = hoverIndex;
-        },
+        // styles we need to apply on draggables
+        ...draggableStyle,
     });
-
-    const [{ isDragging }, drag] = useDrag({
-        type: 'column',
-        item: () => ({ columnId, index }),
-        collect: (monitor: any) => ({
-            isDragging: monitor.isDragging(),
-        }),
-        end() {
-            // console.log(JSON.stringify(columnState));
-            updateColumns(columnState as BoardColumnsType[]);
-        },
-    });
-
-    drop(drag(formRef));
 
     return (
-        <div
-            className={classNames(
-                cls.Column,
-                { [cls.isDragging]: isDragging, [cls.isDropping]: isDropping },
-                [className],
-            )}
-            ref={formRef}
-        >
+        <div className={classNames(cls.Column, {}, [className])}>
             {columnTitle && (
                 <HStack justify={'between'}>
                     <ColumnTitle title={columnTitle} />
@@ -134,12 +60,49 @@ export const ColumnLayout = (props: ColumnProps) => {
                 </HStack>
             )}
 
-            {cardsData &&
-                cardsData.map((card) => (
-                    <Card key={card.id} cardDescription={card.card_text} />
-                ))}
+            <Droppable droppableId={String(index)} type="CARD">
+                {(provided) => (
+                    <div
+                        ref={provided.innerRef}
+                        {...provided.droppableProps}
+                        className={cls.CardsContainer}
+                    >
+                        {cardsData &&
+                            cardsData.map((card, cardIndex) => (
+                                <Draggable
+                                    key={card.id}
+                                    draggableId={String(card.id)}
+                                    index={cardIndex}
+                                >
+                                    {(provided, snapshot) => (
+                                        <div
+                                            ref={provided.innerRef}
+                                            {...provided.draggableProps}
+                                            {...provided.dragHandleProps}
+                                            className={classNames(
+                                                cls.Card,
+                                                {
+                                                    [cls.isDragging]:
+                                                        snapshot.isDragging,
+                                                },
+                                                [className],
+                                            )}
+                                        >
+                                            <Card
+                                                cardDescription={card.card_text}
+                                                columnIndex={index}
+                                                cardIndex={cardIndex}
+                                            />
+                                        </div>
+                                    )}
+                                </Draggable>
+                            ))}
+                        {provided.placeholder}
+                    </div>
+                )}
+            </Droppable>
 
-            {columnId && <AddNewCard ref={formRef} columnId={columnId} />}
+            {columnId && <AddNewCard columnId={columnId} />}
 
             {children}
         </div>

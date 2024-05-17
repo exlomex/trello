@@ -2,10 +2,13 @@ import { configureStore, ReducersMapObject } from '@reduxjs/toolkit';
 import { StateSchema } from '@/app/providers/StoreProvider/config/StateSchema';
 import { CounterReducer } from '@/entities/Counter';
 import { rtkApi } from '@/shared/api/rtkApi';
+import { BoardColumnsReducer } from '@/widgets/BoardCards';
 
 export function createReduxStore(initialState?: StateSchema) {
     const rootReducers: ReducersMapObject<StateSchema> = {
         counter: CounterReducer,
+        // @ts-ignore
+        boardColumns: BoardColumnsReducer,
         [rtkApi.reducerPath]: rtkApi.reducer,
     };
 

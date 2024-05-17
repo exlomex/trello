@@ -7,7 +7,7 @@ const AllBoardsApi = rtkApi.injectEndpoints({
             query: ({ id }) => ({
                 url: `/columns/?_embed=cards&boardId=${id}`,
             }),
-            providesTags: (result) => ['Card', 'Column'],
+            providesTags: (result) => ['Column', 'Card'],
         }),
     }),
 });

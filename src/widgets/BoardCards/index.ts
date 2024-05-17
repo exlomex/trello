@@ -1,4 +1,8 @@
 export { BoardCards } from './ui/BoardCards';
+export {
+    BoardColumnsActions,
+    BoardColumnsReducer,
+} from './model/slice/BoardColumnsCards';
 
 export type {
     BoardCardsTypes,
