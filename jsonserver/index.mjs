@@ -58,6 +58,7 @@ app.put('/update-columns', (req, res) => {
 app.put('/update-cards', (req, res) => {
     try {
         const allColumns = req.body;
+        console.log(allColumns);
         let newCards = [];
 
         allColumns.forEach(column => {

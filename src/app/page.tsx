@@ -7,7 +7,8 @@ import { usePutRequest } from '@/app/providers/apiCheck/putRequestCheck';
 import { BoardsList } from '@/widgets/BoardsList';
 
 export default function Home() {
-    const { data, isLoading } = usePutRequest(null);
+    // TODO delete
+    // const { data, isLoading } = usePutRequest(null);
 
     return <MainLayout asideMenu={<AsideMenu />} content={<BoardsList />} />;
 }

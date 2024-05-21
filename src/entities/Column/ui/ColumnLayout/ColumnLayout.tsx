@@ -1,12 +1,13 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { ReactElement, useEffect, useState } from 'react';
-import { HStack } from '@/shared/ui/Stack';
+import { forwardRef, ReactElement, Ref, useEffect, useState } from 'react';
+import { HStack, VStack } from '@/shared/ui/Stack';
 import { Card } from '@/entities/Card';
 import { AddNewCard } from '@/features/AddNewCard';
 import { ColumnTitle } from '@/entities/Column';
 import { useSelector } from 'react-redux';
 import { selectColumns } from '@/widgets/BoardCards/model/slice/BoardColumnsCards';
-import { Droppable, Draggable } from 'react-beautiful-dnd';
+// import { Droppable, Draggable } from 'react-beautiful-dnd';
+import { Droppable, Draggable } from '@hello-pangea/dnd';
 import { CardsTypes } from '@/widgets/BoardCards';
 import cls from './ColumnLayout.module.scss';
 
@@ -18,7 +19,7 @@ interface ColumnProps {
     children?: ReactElement;
     columnTitle?: string;
     cardsData?: CardsTypes[];
-    columnId?: string;
+    columnId: string;
     index: number;
 }
 
@@ -54,17 +55,17 @@ export const ColumnLayout = (props: ColumnProps) => {
     return (
         <div className={classNames(cls.Column, {}, [className])}>
             {columnTitle && (
-                <HStack justify={'between'}>
+                <HStack justify={'between'} className={cls.upperLine}>
                     <ColumnTitle title={columnTitle} />
                     <p>...</p>
                 </HStack>
             )}
 
-            <Droppable droppableId={String(index)} type="CARD">
+            <Droppable droppableId={String(columnId)} type="CARD">
                 {(provided) => (
                     <div
-                        ref={provided.innerRef}
                         {...provided.droppableProps}
+                        ref={provided.innerRef}
                         className={cls.CardsContainer}
                     >
                         {cardsData &&
@@ -76,9 +77,10 @@ export const ColumnLayout = (props: ColumnProps) => {
                                 >
                                     {(provided, snapshot) => (
                                         <div
-                                            ref={provided.innerRef}
                                             {...provided.draggableProps}
                                             {...provided.dragHandleProps}
+                                            ref={provided.innerRef}
+                                            id={'test-2'}
                                             className={classNames(
                                                 cls.Card,
                                                 {

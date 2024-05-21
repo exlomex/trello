@@ -1,4 +1,4 @@
-import { DetailedHTMLProps, HTMLAttributes, ReactNode } from 'react';
+import React, { ReactNode, forwardRef, ForwardedRef } from 'react';
 import { classNames, Mods } from '@/shared/lib/classNames/classNames';
 import cls from './Flex.module.scss';
 
@@ -34,51 +34,58 @@ const gapClasses: Record<FlexGap, string> = {
     32: cls.gap32,
 };
 
-type DivProps = DetailedHTMLProps<
-    HTMLAttributes<HTMLDivElement>,
-    HTMLDivElement
->;
-
-export interface FlexProps extends DivProps {
+interface DivProps {
     className?: string;
     children: ReactNode;
+}
+
+export interface FlexProps extends DivProps {
     justify?: FlexJustify;
     align?: FlexAlign;
-    direction: FlexDirection;
+    direction?: FlexDirection;
     wrap?: FlexWrap;
     gap?: FlexGap;
     max?: boolean;
+    droppableProps?: any;
 }
 
-export const Flex = (props: FlexProps) => {
-    const {
-        className,
-        children,
-        justify = 'start',
-        align = 'center',
-        direction = 'row',
-        wrap = 'nowrap',
-        gap,
-        max,
-        ...otherProps
-    } = props;
+export const Flex = forwardRef(
+    (props: FlexProps, ref: ForwardedRef<HTMLDivElement>) => {
+        const {
+            className,
+            children,
+            justify = 'start',
+            align = 'center',
+            direction = 'row',
+            wrap = 'nowrap',
+            gap,
+            max,
+            droppableProps,
+            ...otherProps
+        } = props;
 
-    const classes = [
-        className,
-        justifyClasses[justify],
-        alignClasses[align],
-        directionClasses[direction],
-        cls[wrap],
-        gap && gapClasses[gap],
-    ];
+        const classes = [
+            className,
+            justifyClasses[justify],
+            alignClasses[align],
+            directionClasses[direction],
+            cls[wrap],
+            gap && gapClasses[gap],
+        ];
 
-    const mods: Mods = {
-        [cls.max]: max,
-    };
+        const mods: Mods = {
+            [cls.max]: max,
+        };
 
-    return (
-        <div className={classNames(cls.Flex, mods, classes)} {...otherProps}>
-            {children}
-        </div>
-    );
-};
+        return (
+            <div
+                className={classNames(cls.Flex, mods, classes)}
+                ref={ref}
+                {...droppableProps}
+                {...otherProps}
+            >
+                {children}
+            </div>
+        );
+    },
+);

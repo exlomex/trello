@@ -12,16 +12,6 @@
   "columns": [
     {
       "boardId": "1",
-      "column_title": "1 column",
-      "id": 1
-    },
-    {
-      "boardId": "1",
-      "column_title": "2 column",
-      "id": 2
-    },
-    {
-      "boardId": "1",
       "column_title": "аыаыаы",
       "id": 3
     },
@@ -34,23 +24,38 @@
       "boardId": "1",
       "column_title": "апв",
       "id": 5
+    },
+    {
+      "boardId": "1",
+      "column_title": "2 column",
+      "id": 2
+    },
+    {
+      "boardId": "1",
+      "column_title": "1 column",
+      "id": 1
     }
   ],
   "cards": [
     {
-      "columnId": 2,
-      "card_text": "xftgyh",
-      "id": 7
+      "columnId": 3,
+      "card_text": "fsdfs",
+      "id": 9
     },
     {
-      "columnId": 2,
-      "card_text": "3",
-      "id": 3
+      "columnId": 3,
+      "card_text": "fbhfhf",
+      "id": 10
     },
     {
-      "columnId": 2,
-      "card_text": "2",
-      "id": 2
+      "columnId": 4,
+      "card_text": "3131",
+      "id": 8
+    },
+    {
+      "columnId": 1,
+      "card_text": "4 card",
+      "id": 6
     }
   ]
 }

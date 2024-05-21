@@ -2,6 +2,7 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    reactStrictMode: false,
     webpack: (config) => {
 
         const fileLoaderRule = config.module.rules.find((rule) =>

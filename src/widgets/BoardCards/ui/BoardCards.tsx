@@ -10,12 +10,15 @@ import {
     selectColumns,
 } from '@/widgets/BoardCards/model/slice/BoardColumnsCards';
 import { useDispatch, useSelector } from 'react-redux';
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+// import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
 import { DndProvider, useDrag, useDrop } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { useCreateNewCard } from '@/features/AddNewCard/api/AddNewCardApi';
 import { useUpdateCards } from '@/entities/Card/api/updateCardsApi';
 import { CardsTypes } from '@/widgets/BoardCards';
+import { useUpdateColumns } from '@/entities/Column/api/updateColumnsApi';
+import { BoardColumnsType } from '@/features/AddNewColumn/model/types/BoardColumnsType';
 import cls from './BoardCards.module.scss';
 import { useGetAllBoardColumns } from '../api/BoardCardsApi';
 
@@ -23,7 +26,7 @@ interface BoardCardsProps {
     className?: string;
 }
 
-const Column = ({ column, index, moveColumn }: any) => {
+const Column = ({ column, index, moveColumn, columns, updateColumns }: any) => {
     const ref = useRef(null);
     const [, drop] = useDrop({
         accept: 'COLUMN',
@@ -47,6 +50,9 @@ const Column = ({ column, index, moveColumn }: any) => {
         collect: (monitor) => ({
             isDragging: monitor.isDragging(),
         }),
+        end() {
+            updateColumns(columns);
+        },
     });
 
     drag(drop(ref));
@@ -68,15 +74,16 @@ export const BoardCards = (props: BoardCardsProps) => {
     const dispatch = useDispatch();
     const { className } = props;
     const { data, isLoading } = useGetAllBoardColumns({ id: params.id });
-    const [createPost] = useUpdateCards();
+    const [updateCards] = useUpdateCards();
+    const [updateColumns] = useUpdateColumns();
 
     const [timerButton, setTimerButton] = useState(false);
-    const prevCardsRef = useRef<any>([]);
+    // const prevCardsRef = useRef<any>([]);
 
     useEffect(() => {
         if (data) {
             dispatch(BoardColumnsActions.setColumns(data));
-            prevCardsRef.current = data;
+            // prevCardsRef.current = data;
         }
     }, [data, dispatch]);
 
@@ -95,53 +102,70 @@ export const BoardCards = (props: BoardCardsProps) => {
     }, [globalColumns, isLoading]);
 
     const handleDragEnd = (result: any) => {
+        console.log(result);
         const { source, destination, draggableId } = result;
         if (!destination) return;
 
         const sourceColumnIndex = parseInt(source.droppableId, 10);
         const destinationColumnIndex = parseInt(destination.droppableId, 10);
 
+        let SourceMoveColumn = null;
+        let DestinationMoveColumn = null;
+        let SourceMovedId = 0;
+        let DestinationMovedId = 0;
+        for (let i = 0; i <= globalColumns.length - 1; i++) {
+            if (globalColumns[i].id === sourceColumnIndex) {
+                SourceMoveColumn = globalColumns[i];
+                SourceMovedId = i;
+            }
+        }
         if (sourceColumnIndex === destinationColumnIndex) {
-            const column = globalColumns[sourceColumnIndex];
-            const newCards = Array.from(column.cards);
+            const newCards = Array.from(SourceMoveColumn.cards);
             const [movedCard] = newCards.splice(source.index, 1);
             newCards.splice(destination.index, 0, movedCard);
             const newColumns = Array.from(globalColumns);
-            newColumns[sourceColumnIndex] = {
-                ...column,
+            newColumns[SourceMovedId] = {
+                ...SourceMoveColumn,
                 cards: newCards,
             };
             dispatch(BoardColumnsActions.setColumns(newColumns));
-            prevCardsRef.current = newColumns;
-            console.log(newColumns);
-            createPost(newColumns as CardsTypes[]);
+            updateCards(newColumns as CardsTypes[]);
         } else {
-            const sourceColumn = globalColumns[sourceColumnIndex];
-            const destinationColumn = globalColumns[destinationColumnIndex];
-            const sourceCards = Array.from(sourceColumn.cards);
-            const destinationCards = Array.from(destinationColumn.cards);
-            const [movedCard] = sourceCards.splice(source.index, 1);
+            for (let i = 0; i <= globalColumns.length - 1; i++) {
+                if (globalColumns[i].id === destinationColumnIndex) {
+                    DestinationMoveColumn = globalColumns[i];
+                    DestinationMovedId = i;
+                }
+            }
 
+            const sourceCards = Array.from(SourceMoveColumn.cards);
+            const destinationCards = Array.from(DestinationMoveColumn.cards);
+            const [movedCard] = sourceCards.splice(source.index, 1);
             // TODO Изменить
             const updatedMovedCard = {
-                ...movedCard,
-                columnId: 2,
+                ...(movedCard as []),
+                columnId: +destination.droppableId,
             };
+            console.log(
+                destination.droppableId,
+                typeof destination.droppableId,
+            );
+            console.log(updatedMovedCard);
 
             destinationCards.splice(destination.index, 0, updatedMovedCard);
             const newColumns = Array.from(globalColumns);
-            newColumns[sourceColumnIndex] = {
-                ...sourceColumn,
+            console.log(newColumns[SourceMovedId]);
+            newColumns[SourceMovedId] = {
+                ...SourceMoveColumn,
                 cards: sourceCards,
             };
-            newColumns[destinationColumnIndex] = {
-                ...destinationColumn,
+            newColumns[DestinationMovedId] = {
+                ...DestinationMoveColumn,
                 cards: destinationCards,
             };
-            dispatch(BoardColumnsActions.setColumns(newColumns));
-            prevCardsRef.current = newColumns;
             console.log(newColumns);
-            createPost(newColumns as CardsTypes[]);
+            dispatch(BoardColumnsActions.setColumns(newColumns));
+            updateCards(newColumns as CardsTypes[]);
         }
     };
 
@@ -150,7 +174,6 @@ export const BoardCards = (props: BoardCardsProps) => {
         const [movedColumn] = newColumns.splice(dragIndex, 1);
         newColumns.splice(hoverIndex, 0, movedColumn);
         dispatch(BoardColumnsActions.setColumns(newColumns));
-        prevCardsRef.current = newColumns;
     };
 
     return (
@@ -201,6 +224,8 @@ export const BoardCards = (props: BoardCardsProps) => {
                                                 column={column}
                                                 index={index}
                                                 moveColumn={moveColumn}
+                                                columns={globalColumns}
+                                                updateColumns={updateColumns}
                                             />
                                         ),
                                     )}
