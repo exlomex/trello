@@ -13,12 +13,12 @@
     {
       "boardId": "1",
       "column_title": "аыаыаы",
-      "id": 3
+      "id": 4
     },
     {
       "boardId": "1",
       "column_title": "аыаыаы",
-      "id": 4
+      "id": 3
     },
     {
       "boardId": "1",
@@ -38,6 +38,11 @@
   ],
   "cards": [
     {
+      "columnId": 4,
+      "card_text": "3131",
+      "id": 8
+    },
+    {
       "columnId": 3,
       "card_text": "fsdfs",
       "id": 9
@@ -46,11 +51,6 @@
       "columnId": 3,
       "card_text": "fbhfhf",
       "id": 10
-    },
-    {
-      "columnId": 4,
-      "card_text": "3131",
-      "id": 8
     },
     {
       "columnId": 1,
