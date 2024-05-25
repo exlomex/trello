@@ -1,9 +1,9 @@
 // Подключаем необходимые модули
-import express from "express";
+import express from 'express';
 
-import bodyParser from "body-parser";
+import bodyParser from 'body-parser';
 
-import jsonServer from "json-server";
+import jsonServer from 'json-server';
 // Создаем приложение Express
 const app = express();
 
@@ -27,12 +27,10 @@ app.use(async (req, res, next) => {
 });
 app.put('/update-columns', (req, res) => {
     try {
-        const reqColumns = req.body.map(
-            item => {
-                const {cards, ...rest} = item
-                return rest
-            }
-        );
+        const reqColumns = req.body.map((item) => {
+            const { cards, ...rest } = item;
+            return rest;
+        });
 
         if (!Array.isArray(reqColumns)) {
             throw new Error('Данные должны быть представлены в виде массива');
@@ -41,9 +39,11 @@ app.put('/update-columns', (req, res) => {
         const currentState = router.db.getState();
 
         const boardId = req.body[0]['boardId'];
-        const otherColumns = currentState.columns.filter((column) => column['boardId'] !== boardId);
+        const otherColumns = currentState.columns.filter(
+            (column) => column['boardId'] !== boardId,
+        );
         // console.log(currentState.columns);
-        let newColumns = [...otherColumns, ...reqColumns]
+        let newColumns = [...otherColumns, ...reqColumns];
         console.log(newColumns);
 
         currentState.columns = newColumns;
@@ -61,7 +61,7 @@ app.put('/update-cards', (req, res) => {
         console.log(allColumns);
         let newCards = [];
 
-        allColumns.forEach(column => {
+        allColumns.forEach((column) => {
             // Проверяем, есть ли у текущего элемента свойство cards
             if (column.cards) {
                 // Если есть, добавляем карточки этой колонки в общий массив карточек
@@ -86,6 +86,6 @@ app.put('/update-cards', (req, res) => {
 
 app.use(router);
 
-app.listen(5005, () => {
+app.listen(5000, () => {
     console.log('JSON Server is running');
 });

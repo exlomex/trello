@@ -4,10 +4,9 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 const nextConfig = {
     reactStrictMode: false,
     webpack: (config) => {
-
         const fileLoaderRule = config.module.rules.find((rule) =>
             rule.test?.test?.('.svg'),
-        )
+        );
 
         config.module.rules.push(
             {
@@ -18,11 +17,13 @@ const nextConfig = {
             {
                 test: /\.svg$/i,
                 issuer: fileLoaderRule.issuer,
-                resourceQuery: { not: [...fileLoaderRule.resourceQuery.not, /url/] }, // exclude if *.svg?url
+                resourceQuery: {
+                    not: [...fileLoaderRule.resourceQuery.not, /url/],
+                }, // exclude if *.svg?url
                 use: ['@svgr/webpack'],
             },
-        )
-        return config
+        );
+        return config;
     },
     // experimental: {'esmExternals': false}
     // webpack: (config, { dev }) => {

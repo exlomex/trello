@@ -1,27 +1,24 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { BoardColumnsCardsSchema } from '@/widgets/BoardCards/model/types/BoardColumnsCardsSchema';
+import { StateSchema } from '@/app/providers/StoreProvider';
 
 // Создаем начальное состояние
-const initialState = {
+const initialState: BoardColumnsCardsSchema = {
     columns: [],
 };
 
-// Создаем слайс
 const BoardColumnsCards = createSlice({
     name: 'boardColumns',
     initialState,
     reducers: {
-        // Экшен для установки состояния
         setColumns(state, action) {
             state.columns = action.payload;
         },
     },
 });
 
-// Экспортируем экшены
 export const { actions: BoardColumnsActions } = BoardColumnsCards;
 
-// Создаем селекторы
-export const selectColumns = (state: any) => state.boardColumns.columns;
+export const selectColumns = (state: StateSchema) => state.boardColumns.columns;
 
-// Экспортируем редюсер
 export const { reducer: BoardColumnsReducer } = BoardColumnsCards;

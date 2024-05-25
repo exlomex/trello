@@ -8,3 +8,5 @@ export type {
     BoardCardsTypes,
     CardsTypes,
 } from './model/types/BoardCardsTypes';
+
+export type { BoardColumnsCardsSchema } from './model/types/BoardColumnsCardsSchema';

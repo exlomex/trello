@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { AsideMenu } from '@/widgets/AsideMenu';
 import { StoreProvider } from '@/app/providers/StoreProvider';
+import { debug } from 'node:util';
 
 jest.mock('../../../shared/layouts/IconLayout', () => ({
     IconLayout: jest.fn(),

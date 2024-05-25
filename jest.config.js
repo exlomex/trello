@@ -29,7 +29,8 @@ const customJestConfig = {
 
     preset: 'ts-jest/presets/default-esm',
     moduleNameMapper: {
-        // ...
+        'react-dnd': 'react-dnd-cjs',
+        'react-dnd-html5-backend': 'react-dnd-html5-backend-cjs',
     },
     transform: {
         '^.+\\.tsx?$': 'ts-jest',

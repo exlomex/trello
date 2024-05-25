@@ -25,4 +25,8 @@
     div {
         margin-bottom: 12px;
     }
+
+    min-height: 1px;
+    max-height: calc(100vh - 180px);
+    overflow-y: auto;
 }

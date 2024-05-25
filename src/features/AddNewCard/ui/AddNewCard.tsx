@@ -18,7 +18,7 @@ import cls from './AddNewCard.module.scss';
 
 interface AddNewCardProps {
     className?: string;
-    columnId: string;
+    columnId: number | string;
 }
 
 export const AddNewCard = forwardRef(

@@ -7,7 +7,6 @@ import { BoardColumnsReducer } from '@/widgets/BoardCards';
 export function createReduxStore(initialState?: StateSchema) {
     const rootReducers: ReducersMapObject<StateSchema> = {
         counter: CounterReducer,
-        // @ts-ignore
         boardColumns: BoardColumnsReducer,
         [rtkApi.reducerPath]: rtkApi.reducer,
     };

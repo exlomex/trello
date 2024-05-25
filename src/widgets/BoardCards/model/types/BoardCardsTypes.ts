@@ -1,7 +1,7 @@
 export interface CardsTypes {
     id: string;
     card_text: string;
-    columnId: string;
+    columnId: number;
 }
 
 export interface BoardCardsTypes {
