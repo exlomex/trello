@@ -11,7 +11,9 @@ interface AllBoardsListProps {
 }
 
 export const AllBoardsList = ({ className }: AllBoardsListProps) => {
-    const { data: boards, isLoading } = useAllBords(null);
+    const { data: boards, isLoading } = useAllBords(null, {
+        // pollingInterval: 5000,
+    });
     const router = useRouter();
 
     const onChangePage = useCallback(

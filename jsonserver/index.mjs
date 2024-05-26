@@ -1,23 +1,16 @@
-// Подключаем необходимые модули
 import express from 'express';
 
 import bodyParser from 'body-parser';
 
 import jsonServer from 'json-server';
-// Создаем приложение Express
 const app = express();
 
-// Подключаем JSON Server и определяем маршруты
 const router = jsonServer.router('./jsonserver/db.json');
 const middlewares = jsonServer.defaults();
 
-// Используем middleware для обработки JSON-запросов
 app.use(bodyParser.json());
 
-// Используем middleware JSON Server
 app.use(middlewares);
-
-// Обработчик для обновления таблицы columns
 
 app.use(async (req, res, next) => {
     await new Promise((res) => {
@@ -42,9 +35,7 @@ app.put('/update-columns', (req, res) => {
         const otherColumns = currentState.columns.filter(
             (column) => column['boardId'] !== boardId,
         );
-        // console.log(currentState.columns);
         let newColumns = [...otherColumns, ...reqColumns];
-        console.log(newColumns);
 
         currentState.columns = newColumns;
         router.db.set('columns', newColumns).write();
@@ -57,26 +48,41 @@ app.put('/update-columns', (req, res) => {
 
 app.put('/update-cards', (req, res) => {
     try {
-        const allColumns = req.body;
-        console.log(allColumns);
-        let newCards = [];
+        const reqColumns = req.body;
+        let reqCards = []
+        let cardsTexts = []
+        const currentState = router.db.getState();
 
-        allColumns.forEach((column) => {
-            // Проверяем, есть ли у текущего элемента свойство cards
+        reqColumns.forEach((column) => {
             if (column.cards) {
-                // Если есть, добавляем карточки этой колонки в общий массив карточек
-                newCards = [...newCards, ...column.cards];
+                if (column.cards.length) {
+                    for (const card of column.cards) {
+                        if (!(cardsTexts.includes(card.card_text))) {
+                            cardsTexts.push(card.card_text)
+                        }
+                    }
+                }
+                reqCards = [...reqCards, ...column.cards];
             }
         });
+
+        const otherCards = currentState.cards.filter(
+            (card) => !cardsTexts.includes(card.card_text),
+        );
+
+        const newCards = [...otherCards, ...reqCards];
+        console.log(newCards);
+
+        currentState.cards = newCards;
+        router.db.set('cards', newCards).write();
 
         if (!Array.isArray(newCards)) {
             throw new Error('Данные должны быть представлены в виде массива');
         }
 
-        const currentState = router.db.getState();
-        currentState.cards = newCards;
+        // currentState.cards = newCards;
 
-        router.db.set('cards', newCards).write();
+        // router.db.set('cards', newCards).write();
 
         res.sendStatus(200);
     } catch (error) {
