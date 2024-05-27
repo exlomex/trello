@@ -62,9 +62,8 @@ export const AllBoardsList = ({ className }: AllBoardsListProps) => {
                     <BoardName
                         key={board.id}
                         onClick={() => onChangePage(board.id)}
-                    >
-                        {board.board_title}
-                    </BoardName>
+                        boardName={board.board_title}
+                    />
                 ))}
         </div>
     );

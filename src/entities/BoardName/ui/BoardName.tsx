@@ -4,13 +4,13 @@ import cls from './BoardName.module.scss';
 
 interface BoardNameProps {
     className?: string;
-    children: ReactNode;
+    boardName: string;
     boardColor?: string;
     onClick?: () => void;
 }
 
 export const BoardName = (props: BoardNameProps) => {
-    const { className, boardColor = '#868686', children } = props;
+    const { className, boardColor = '#868686', boardName } = props;
     return (
         <div
             className={classNames(cls.BoardName, {}, [className])}
@@ -20,7 +20,7 @@ export const BoardName = (props: BoardNameProps) => {
                 className={cls.boardBox}
                 style={{ backgroundColor: boardColor }}
             />
-            <p className={cls.boardText}>{children}</p>
+            <p className={cls.boardText}>{boardName}</p>
         </div>
     );
 };

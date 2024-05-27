@@ -1,5 +1,5 @@
 import { DraggableColumn } from '@/entities/Column';
-import { HStack } from '@/shared/ui/Stack';
+import { HStack, VStack } from '@/shared/ui/Stack';
 import { useParams } from 'next/navigation';
 import { Skeleton } from '@/shared/ui/Skeleton';
 import { AddNewColumn } from '@/features/AddNewColumn';
@@ -15,6 +15,9 @@ import { HTML5Backend } from 'react-dnd-html5-backend';
 import { useUpdateCards } from '@/entities/Card/api/updateCardsApi';
 import { handleDragEnd } from '@/widgets/BoardCards/lib/CardDnd';
 import { BoardCardsTypes } from '@/widgets/BoardCards';
+import { BoardName } from '@/entities/BoardName';
+import { useAllBords } from '@/features/AllBoardsList/api/AllBoardsApi';
+import { useGetBoardInfo } from '@/widgets/BoardCards/api/BoardInfoApi';
 import { useGetAllBoardColumns } from '../api/BoardCardsApi';
 import cls from './BoardCards.module.scss';
 
@@ -55,72 +58,96 @@ export const BoardCards = (props: BoardCardsProps) => {
         handleDragEnd(globalColumns, dispatch, updateCards, result);
     };
 
+    const { data: boardData, isLoading: boardIsLoading } = useGetBoardInfo({
+        id: params.id,
+    });
+
     return (
-        <DndProvider backend={HTML5Backend}>
-            <DragDropContext onDragEnd={onDragEndFunc}>
-                <Droppable
-                    droppableId="board"
-                    type="COLUMN"
-                    direction="horizontal"
-                >
-                    {(provided) => (
-                        <HStack
-                            {...provided.droppableProps}
-                            ref={provided.innerRef}
-                            gap={'24'}
-                            wrap={'nowrap'}
-                            align={'start'}
-                            className={cls.droppableDiv}
-                        >
-                            {isLoading && (
-                                <>
-                                    <Skeleton
-                                        width={260}
-                                        border={8}
-                                        height={200}
-                                        marginBottom={30}
-                                    />
-                                    <Skeleton
-                                        width={260}
-                                        border={8}
-                                        height={120}
-                                        marginBottom={25}
-                                    />
-                                    <Skeleton
-                                        width={260}
-                                        border={8}
-                                        height={50}
-                                        marginBottom={25}
-                                    />
-                                </>
-                            )}
+        <VStack gap={'60'} wrap={'nowrap'}>
+            <div className={cls.boardNameWrapper}>
+                {boardIsLoading && (
+                    <Skeleton
+                        width={130}
+                        border={8}
+                        height={30}
+                        marginBottom={30}
+                        className={cls.boardNamePaddings}
+                    />
+                )}
+                {boardData && (
+                    <BoardName
+                        boardName={boardData.board_title}
+                        className={cls.boardNamePaddings}
+                    />
+                )}
+            </div>
+            <DndProvider backend={HTML5Backend}>
+                <DragDropContext onDragEnd={onDragEndFunc}>
+                    <Droppable
+                        droppableId="board"
+                        type="COLUMN"
+                        direction="horizontal"
+                    >
+                        {(provided) => (
+                            <HStack
+                                {...provided.droppableProps}
+                                ref={provided.innerRef}
+                                gap={'24'}
+                                wrap={'nowrap'}
+                                align={'start'}
+                                className={cls.droppableDiv}
+                            >
+                                {isLoading && (
+                                    <>
+                                        <Skeleton
+                                            width={260}
+                                            border={8}
+                                            height={200}
+                                            marginBottom={30}
+                                        />
+                                        <Skeleton
+                                            width={260}
+                                            border={8}
+                                            height={120}
+                                            marginBottom={25}
+                                        />
+                                        <Skeleton
+                                            width={260}
+                                            border={8}
+                                            height={50}
+                                            marginBottom={25}
+                                        />
+                                    </>
+                                )}
 
-                            {Boolean(globalColumns.length) && (
-                                <>
-                                    {globalColumns.map(
-                                        (
-                                            column: BoardCardsTypes,
-                                            index: number,
-                                        ) => (
-                                            <DraggableColumn
-                                                key={column.id}
-                                                column={column}
-                                                index={index}
-                                                columns={globalColumns}
-                                            />
-                                        ),
+                                {Boolean(globalColumns.length) &&
+                                    !isLoading && (
+                                        <>
+                                            {globalColumns.map(
+                                                (
+                                                    column: BoardCardsTypes,
+                                                    index: number,
+                                                ) => (
+                                                    <DraggableColumn
+                                                        key={column.id}
+                                                        column={column}
+                                                        index={index}
+                                                        columns={globalColumns}
+                                                    />
+                                                ),
+                                            )}
+                                        </>
                                     )}
-                                </>
-                            )}
 
-                            {timerButton && (
-                                <AddNewColumn boardId={params.id} />
-                            )}
-                            {provided.placeholder}
-                        </HStack>
-                    )}
-                </Droppable>
-            </DragDropContext>
-        </DndProvider>
+                                {timerButton && (
+                                    <AddNewColumn boardId={params.id} />
+                                )}
+                                {provided.placeholder}
+                            </HStack>
+                        )}
+                    </Droppable>
+                </DragDropContext>
+            </DndProvider>
+        </VStack>
     );
 };
