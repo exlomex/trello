@@ -7,6 +7,7 @@ import { Button } from '@/shared/ui/Button/Button';
 import HideSvg from '@/shared/assets/hide.svg';
 import { AllBoardsList } from '@/features/AllBoardsList/ui/AllBoardsList';
 import { AddNewCard } from '@/features/AddNewCard/ui/AddNewCard';
+import { AddNewBoardButton } from '@/features/AddNewBoard';
 import cls from './AsideMenu.module.scss';
 
 interface AsideMenuProps {
@@ -59,16 +60,13 @@ export const AsideMenu = memo(({ className }: AsideMenuProps) => {
                 </div>
 
                 <AllBoardsList className={classNames('', collapsedMods, [])} />
-                <Button
-                    variant={'LeftAddonCreateButton'}
+                <AddNewBoardButton
                     className={classNames(
                         '',
                         { [cls.collapsedElem]: collapsed },
                         [],
                     )}
-                >
-                    Создать доску
-                </Button>
+                />
             </div>
 
             <IconLayout

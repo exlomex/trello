@@ -17,7 +17,7 @@ import { handleDragEnd } from '@/widgets/BoardCards/lib/CardDnd';
 import { BoardCardsTypes } from '@/widgets/BoardCards';
 import { BoardName } from '@/entities/BoardName';
 import { useAllBords } from '@/features/AllBoardsList/api/AllBoardsApi';
-import { useGetBoardInfo } from '@/widgets/BoardCards/api/BoardInfoApi';
+import { useGetBoardInfo } from '../api/BoardInfoApi';
 import { useGetAllBoardColumns } from '../api/BoardCardsApi';
 import cls from './BoardCards.module.scss';
 

@@ -1,5 +1,6 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { FC } from 'react';
+import { FC, useCallback, useState } from 'react';
+import { Modal } from '@/shared/ui/Modal';
 import cls from './BoardsList.module.scss';
 
 interface BoardsListProps {

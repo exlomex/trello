@@ -7,6 +7,7 @@ const AllBoardsApi = rtkApi.injectEndpoints({
             query: () => ({
                 url: '/boards',
             }),
+            providesTags: () => ['Board'],
         }),
     }),
 });
