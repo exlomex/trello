@@ -21,7 +21,7 @@ export const AddNewBoardForm = (props: AddNewBoardFormProps) => {
 
     const newBoardClickCloseButton = useCallback(() => {
         onClose();
-    }, []);
+    }, [onClose]);
 
     const [addBoardInputValue, setAddBoardInputValue] = useState('');
 
