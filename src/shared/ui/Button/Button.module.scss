@@ -94,3 +94,15 @@
         margin-right: 6px;
     }
 }
+
+.LeftAddonPopoverButton {
+    svg {
+        margin-right: 10px;
+    }
+
+    background-color: transparent;
+    justify-content: start;
+    font-size: 0.9em;
+    padding: 2px;
+    max-height: 30px;
+}

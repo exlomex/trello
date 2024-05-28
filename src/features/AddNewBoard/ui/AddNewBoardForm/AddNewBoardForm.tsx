@@ -4,7 +4,7 @@ import { HStack, VStack } from '@/shared/ui/Stack';
 import { Button } from '@/shared/ui/Button';
 import { IconLayout } from '@/shared/layouts/IconLayout';
 import CloseIcon from '@/shared/assets/close.svg';
-import { useCallback, useState } from 'react';
+import { memo, useCallback, useState } from 'react';
 import { CardsTypes } from '@/widgets/BoardCards';
 import { useCreateNewBoard } from '@/features/AddNewBoard/api/AddNewBoardApi';
 import { useCreateNewCard } from '@/features/AddNewCard/api/AddNewCardApi';
@@ -16,7 +16,7 @@ interface AddNewBoardFormProps {
     onClose: () => void;
 }
 
-export const AddNewBoardForm = (props: AddNewBoardFormProps) => {
+export const AddNewBoardForm = memo((props: AddNewBoardFormProps) => {
     const { className, onClose } = props;
 
     const newBoardClickCloseButton = useCallback(() => {
@@ -67,4 +67,4 @@ export const AddNewBoardForm = (props: AddNewBoardFormProps) => {
             </HStack>
         </VStack>
     );
-};
+});

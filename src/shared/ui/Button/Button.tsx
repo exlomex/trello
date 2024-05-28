@@ -14,7 +14,8 @@ export type ButtonVariant =
     | 'DefaultButton'
     | 'IconButton'
     | 'LeftAddonCreateButton'
-    | 'LeftAddonAddButton';
+    | 'LeftAddonAddButton'
+    | 'LeftAddonPopoverButton';
 
 export type ButtonBorderRadius = '6' | '12' | '16' | '24';
 export type ButtonSize = 'm' | 'l';

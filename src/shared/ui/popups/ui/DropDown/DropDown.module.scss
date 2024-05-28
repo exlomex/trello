@@ -1,0 +1,22 @@
+.menuWrapper {
+    color: var(--text-color);
+    border: 1px solid var(--card);
+    background-color: var(--second-color);
+    padding: 15px;
+    border-radius: 14px;
+    width: 220px;
+    max-height: 115px;
+
+    .menuHeader {
+        font-weight: 500;
+        margin-bottom: 10px;
+    }
+}
+
+.button {
+    background-color: transparent;
+    min-height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

@@ -49,16 +49,16 @@ app.put('/update-columns', (req, res) => {
 app.put('/update-cards', (req, res) => {
     try {
         const reqColumns = req.body;
-        let reqCards = []
-        let cardsTexts = []
+        let reqCards = [];
+        let cardsTexts = [];
         const currentState = router.db.getState();
 
         reqColumns.forEach((column) => {
             if (column.cards) {
                 if (column.cards.length) {
                     for (const card of column.cards) {
-                        if (!(cardsTexts.includes(card.card_text))) {
-                            cardsTexts.push(card.card_text)
+                        if (!cardsTexts.includes(card.card_text)) {
+                            cardsTexts.push(card.card_text);
                         }
                     }
                 }

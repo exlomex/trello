@@ -19,8 +19,7 @@
         "start:dev:server--new": "node jsonserver/index.mjs"
     },
     "dependencies": {
-        "@dnd-kit/modifiers": "^7.0.0",
-        "@dnd-kit/sortable": "^8.0.0",
+        "@headlessui/react": "^2.0.4",
         "@hello-pangea/dnd": "^16.6.0",
         "@reduxjs/toolkit": "^2.2.3",
         "@storybook/addon-themes": "^8.0.8",

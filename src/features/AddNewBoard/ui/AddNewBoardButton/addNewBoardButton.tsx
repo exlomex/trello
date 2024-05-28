@@ -1,14 +1,14 @@
 import { classNames } from '@/shared/lib/classNames';
 import cls from '@/widgets/AsideMenu/ui/AsideMenu.module.scss';
 import { Button } from '@/shared/ui/Button';
-import { useCallback, useState } from 'react';
+import { memo, useCallback, useState } from 'react';
 import { AddNewBoardModal } from '../AddNewBoardModal/AddNewBoardModal';
 
 interface AddNewBoardButtonProps {
     className?: string;
 }
 
-export const AddNewBoardButton = (props: AddNewBoardButtonProps) => {
+export const AddNewBoardButton = memo((props: AddNewBoardButtonProps) => {
     const { className } = props;
 
     const [isModal, setIsModal] = useState(false);
@@ -30,4 +30,4 @@ export const AddNewBoardButton = (props: AddNewBoardButtonProps) => {
             <AddNewBoardModal isOpen={isModal} onClose={toggleModal} />
         </>
     );
-};
+});

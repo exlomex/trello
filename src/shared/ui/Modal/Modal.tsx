@@ -1,7 +1,8 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { ReactNode, useCallback, useEffect } from 'react';
+import { memo, ReactNode, useCallback, useEffect } from 'react';
 import { Portal } from '@/shared/ui/Portal';
 import { useTheme } from '@/app/providers/ThemeProvider/lib/useTheme';
+import { Transition } from '@headlessui/react';
 import cls from './Modal.module.scss';
 
 interface ModalProps {
@@ -12,7 +13,7 @@ interface ModalProps {
     isPortal?: boolean;
 }
 
-export const Modal = (props: ModalProps) => {
+export const Modal = memo((props: ModalProps) => {
     const { className, children, isOpen, onClose, isPortal = true } = props;
     const mods: Record<string, boolean | undefined> = {
         [cls.opened]: isOpen,
@@ -54,4 +55,4 @@ export const Modal = (props: ModalProps) => {
             </div>
         </Portal>
     );
-};
+});

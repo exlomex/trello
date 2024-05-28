@@ -15,6 +15,7 @@ import { useSelector } from 'react-redux';
 import { selectColumns } from '@/widgets/BoardCards/model/slice/BoardColumnsCards';
 import { Droppable, Draggable } from '@hello-pangea/dnd';
 import { CardsTypes } from '@/widgets/BoardCards';
+import { ColumnDropDown } from '@/features/ColumnDropDown';
 import cls from './ColumnLayout.module.scss';
 
 export type ColumnType = 'view' | 'delete';
@@ -50,7 +51,7 @@ export const ColumnLayout = (props: ColumnProps) => {
             {columnTitle && (
                 <HStack justify={'between'} className={cls.upperLine}>
                     <ColumnTitle title={columnTitle} />
-                    <p>...</p>
+                    <ColumnDropDown columnId={columnId} />
                 </HStack>
             )}
 
