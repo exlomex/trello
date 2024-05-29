@@ -14,3 +14,17 @@
     //  bg
     background-color: var(--bg);
 }
+
+*::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+*::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: var(--card);
+    border-radius: 20px;
+}

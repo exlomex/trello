@@ -20,7 +20,6 @@ export const ColumnDropDown = (props: ColumnDropDownProps) => {
 
     const deleteHandler = (e: SyntheticEvent<HTMLDivElement>) => {
         e.preventDefault();
-        console.log(13);
         deleteColumn(columnId);
     };
 
