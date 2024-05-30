@@ -1,7 +1,10 @@
 import { RefObject, useCallback, useEffect } from 'react';
 
+type ediTypes = 'column_title' | 'board_title';
+
 export function useOutsideDivHandler(
-    ref: RefObject<HTMLTextAreaElement>,
+    editType: ediTypes,
+    ref: RefObject<HTMLTextAreaElement> | RefObject<HTMLInputElement>,
     textAreaValue: string,
     columnId: number,
     stateFunction?: (state: boolean) => void,
@@ -13,12 +16,19 @@ export function useOutsideDivHandler(
             if (ref && 'current' in ref && ref.current) {
                 if (ref && !ref.current.contains(e.target as Node)) {
                     stateFunction?.(false);
-                    const requestBody = { column_title: textAreaValue };
+                    const requestBody = { [editType]: textAreaValue };
                     updateDataFunction?.({ id: columnId, body: requestBody });
                 }
             }
         },
-        [columnId, ref, stateFunction, textAreaValue, updateDataFunction],
+        [
+            columnId,
+            ref,
+            stateFunction,
+            textAreaValue,
+            updateDataFunction,
+            editType,
+        ],
     );
 
     useEffect(() => {
@@ -32,11 +42,11 @@ export function useOutsideDivHandler(
         (e: KeyboardEvent) => {
             if (e.key === 'Escape' || e.key === 'Enter') {
                 stateFunction?.(false);
-                const requestBody = { column_title: textAreaValue };
+                const requestBody = { [editType]: textAreaValue };
                 updateDataFunction?.({ id: columnId, body: requestBody });
             }
         },
-        [columnId, stateFunction, textAreaValue, updateDataFunction],
+        [columnId, stateFunction, textAreaValue, updateDataFunction, editType],
     );
 
     useEffect(() => {

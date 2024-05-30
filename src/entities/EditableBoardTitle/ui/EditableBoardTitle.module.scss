@@ -1,0 +1,43 @@
+.EditableBoardTitle {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0 15px;
+    cursor: pointer;
+    margin-bottom: 25px;
+
+    .boardBox {
+        width: 32px;
+        height: 32px;
+        aspect-ratio: 1 / 1;
+        border-radius: 4px;
+        flex-shrink: 0;
+    }
+
+    .boardText {
+        max-width: 195px;
+        font-size: 1.2em;
+        white-space: nowrap;
+    }
+
+    .titleTextArea {
+        display: none;
+        max-width: 212px;
+        height: 34px;
+        position: absolute;
+        font-size: 1.2em;
+        padding: 3px 6px;
+        left: 41px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-weight: 400;
+    }
+
+    .editable ~ input {
+        display: block;
+    }
+
+    .editable ~ p {
+        display: none;
+    }
+}

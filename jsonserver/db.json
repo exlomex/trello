@@ -1,8 +1,10 @@
 {
   "boards": [
     {
-      "board_title": "card_hzhz",
-      "id": "1"
+      "board_title": "ura",
+      "id": "1",
+      "column_title": "card_hzhzfsdfsfs",
+      "editType": "text"
     },
     {
       "id": "7285",
@@ -30,8 +32,9 @@
     },
     {
       "boardId": "1",
-      "column_title": "test",
-      "id": 15
+      "column_title": "oudab",
+      "id": 15,
+      "editType": "hello"
     },
     {
       "boardId": "1",

@@ -27,6 +27,7 @@ export const ColumnTitle = (props: ColumnTitleProps) => {
     const [editColumnTitle, { error }] = useEditColumnTitle();
 
     useOutsideDivHandler(
+        'column_title',
         textAreaRef,
         titleValue,
         columnId,

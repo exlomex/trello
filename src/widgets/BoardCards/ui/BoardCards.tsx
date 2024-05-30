@@ -15,8 +15,7 @@ import { HTML5Backend } from 'react-dnd-html5-backend';
 import { useUpdateCards } from '@/entities/Card/api/updateCardsApi';
 import { handleDragEnd } from '@/widgets/BoardCards/lib/CardDnd';
 import { BoardCardsTypes } from '@/widgets/BoardCards';
-import { BoardName } from '@/entities/BoardName';
-import { useAllBords } from '@/features/AllBoardsList/api/AllBoardsApi';
+import { EditableBoardTitle } from '@/entities/EditableBoardTitle';
 import { useGetBoardInfo } from '../api/BoardInfoApi';
 import { useGetAllBoardColumns } from '../api/BoardCardsApi';
 import cls from './BoardCards.module.scss';
@@ -75,7 +74,7 @@ export const BoardCards = (props: BoardCardsProps) => {
                     />
                 )}
                 {boardData && (
-                    <BoardName
+                    <EditableBoardTitle
                         boardName={boardData.board_title}
                         className={cls.boardNamePaddings}
                     />
