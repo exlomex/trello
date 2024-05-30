@@ -37,7 +37,15 @@ export const DropDown = memo((props: DropDownProps) => {
 
     return (
         <Menu as={'div'} className={classNames(cls.DropDown, {}, [className])}>
-            <MenuButton as={'button'} className={cls.button}>
+            <MenuButton
+                as={'button'}
+                className={cls.button}
+                draggable
+                onDragStart={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                }}
+            >
                 {trigger}
             </MenuButton>
 

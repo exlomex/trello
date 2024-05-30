@@ -17,6 +17,6 @@ export function useOutsideDivHandler(
 
     useEffect(() => {
         document.addEventListener('mouseup', handleClick);
-        return () => document.removeEventListener('mousedown', handleClick);
+        return () => document.removeEventListener('mouseup', handleClick);
     }, [handleClick]);
 }

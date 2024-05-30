@@ -4,7 +4,7 @@ const DeleteColumnApi = rtkApi.injectEndpoints({
     endpoints: (build) => ({
         deleteColumn: build.mutation<null, string | number>({
             query: (id) => ({
-                url: `/columns/${id}`,
+                url: `/columns/${id}?_dependent=cards`,
                 method: 'DELETE',
             }),
             invalidatesTags: ['Column'],

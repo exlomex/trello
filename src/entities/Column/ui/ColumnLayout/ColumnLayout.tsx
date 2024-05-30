@@ -1,18 +1,9 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
-import {
-    forwardRef,
-    ReactElement,
-    Ref,
-    useEffect,
-    useRef,
-    useState,
-} from 'react';
-import { HStack, VStack } from '@/shared/ui/Stack';
+import { ReactElement, useRef } from 'react';
+import { HStack } from '@/shared/ui/Stack';
 import { Card } from '@/entities/Card';
 import { AddNewCard } from '@/features/AddNewCard';
 import { ColumnTitle } from '@/entities/Column';
-import { useSelector } from 'react-redux';
-import { selectColumns } from '@/widgets/BoardCards/model/slice/BoardColumnsCards';
 import { Droppable, Draggable } from '@hello-pangea/dnd';
 import { CardsTypes } from '@/widgets/BoardCards';
 import { ColumnDropDown } from '@/features/ColumnDropDown';
@@ -26,7 +17,7 @@ interface ColumnProps {
     children?: ReactElement;
     columnTitle?: string;
     cardsData?: CardsTypes[];
-    columnId: string;
+    columnId: number;
     index: number;
 }
 
@@ -50,7 +41,7 @@ export const ColumnLayout = (props: ColumnProps) => {
         >
             {columnTitle && (
                 <HStack justify={'between'} className={cls.upperLine}>
-                    <ColumnTitle title={columnTitle} />
+                    <ColumnTitle title={columnTitle} columnId={columnId} />
                     <ColumnDropDown columnId={columnId} />
                 </HStack>
             )}

@@ -15,49 +15,18 @@
   ],
   "columns": [
     {
-      "boardId": "7285",
-      "column_title": "hdf",
-      "id": 11
-    },
-    {
-      "boardId": "7285",
-      "column_title": "аыаы",
-      "id": 8
-    },
-    {
-      "boardId": "7285",
-      "column_title": "jjhg",
-      "id": 7
-    },
-    {
-      "boardId": "7285",
-      "column_title": "fdsfs",
+      "column_title": "test23",
       "id": 6
     },
     {
       "boardId": "uRlvheO",
-      "column_title": "test",
+      "column_title": "all right",
       "id": 12
     },
     {
       "boardId": "uRlvheO",
-      "column_title": "test1",
+      "column_title": "testnew",
       "id": 13
-    },
-    {
-      "boardId": "1",
-      "column_title": "авыаы",
-      "id": 10
-    },
-    {
-      "boardId": "1",
-      "column_title": "fsfs",
-      "id": 9
-    },
-    {
-      "boardId": "1",
-      "column_title": "new column",
-      "id": 14
     },
     {
       "boardId": "1",
@@ -66,18 +35,13 @@
     },
     {
       "boardId": "1",
-      "column_title": "test",
+      "column_title": "sdf;lk",
       "id": 16
     }
   ],
   "cards": [
     {
-      "columnId": 11,
-      "card_text": "fdsf",
-      "id": 43
-    },
-    {
-      "columnId": 11,
+      "columnId": 6,
       "card_text": "fsf",
       "id": 42
     },
@@ -87,29 +51,24 @@
       "id": 41
     },
     {
-      "columnId": 12,
+      "columnId": 13,
       "card_text": "fdsfsd",
       "id": 45
     },
     {
-      "columnId": 10,
-      "card_text": "boardNamePaddingsboardNamePaddingsboardNamePaddingsboardNamePaddingsboardNamePaddingsboardNamePaddingsboardNamePaddingsboardNamePaddingsboardNamePaddingsboardNamePaddingsboardNamePaddingsboardNamePaddingsboardNamePaddingsboardNamePaddingsboardNamePaddingsboardNamePaddingsboardNamePaddingsboardNamePaddingsboardNamePaddingsboardNamePaddingsboardNamePaddingsboardNamePaddingsboardNamePaddingsboardNamePaddingsboardNamePaddingsboardNamePaddingsboardNamePaddingsboardNamePaddingsboardNamePaddingsboardNamePaddingsboardNamePaddingsboardNamePaddingsboardNamePaddingsboardNamePaddingsboardNamePaddingsboardNamePaddingsboardNamePaddingsboardNamePaddingsboardNamePaddingsboardNamePaddingsboardNamePaddingsboardNamePaddingsboardNamePaddingsboardNamePaddingsboardNamePaddingsboardNamePaddingsboardNamePaddingsboardNamePaddingsboardNamePaddingsboardNamePaddingsboardNamePaddingsboardNamePaddingsboardNamePaddingsboardNamePaddingsboardNamePaddingsboardNamePaddingsboardNamePaddings",
-      "id": 44
+      "columnId": 15,
+      "card_text": "fghfhfhf",
+      "id": 48
     },
     {
-      "columnId": 10,
-      "card_text": "gfdgd",
-      "id": 38
+      "columnId": 16,
+      "card_text": "gdgd",
+      "id": 47
     },
     {
-      "columnId": 10,
-      "card_text": "fsdf",
-      "id": 40
-    },
-    {
-      "columnId": 9,
-      "card_text": "flow-x: auto;overflow-x: auto;overflow-x: auto;overflow-x: x: auto;",
-      "id": 39
+      "columnId": 16,
+      "card_text": "fghfhfhf",
+      "id": 46
     }
   ]
 }
