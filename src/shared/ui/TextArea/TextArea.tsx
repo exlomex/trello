@@ -32,6 +32,7 @@ export const TextArea = forwardRef(
                     e.preventDefault();
                     e.stopPropagation();
                 }}
+                style={props.style}
             />
         );
     },

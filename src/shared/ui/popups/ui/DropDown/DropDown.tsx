@@ -1,5 +1,12 @@
 import { classNames } from '@/shared/lib/classNames';
-import { ChangeEvent, memo, ReactNode, SyntheticEvent } from 'react';
+import {
+    ChangeEvent,
+    memo,
+    ReactNode,
+    SyntheticEvent,
+    useEffect,
+    useRef,
+} from 'react';
 import {
     Menu,
     MenuButton,
@@ -28,7 +35,7 @@ interface DropDownProps {
     items: DropdownItem[];
     trigger: ReactNode;
     anchor?: AnchorProps;
-    movedClassname?: string;
+    triggerClassname?: string;
 }
 
 export const DropDown = memo((props: DropDownProps) => {
@@ -37,7 +44,7 @@ export const DropDown = memo((props: DropDownProps) => {
         anchor = 'bottom end',
         trigger,
         items,
-        movedClassname,
+        triggerClassname,
     } = props;
 
     const { theme } = useTheme();
@@ -46,10 +53,13 @@ export const DropDown = memo((props: DropDownProps) => {
         <Menu as={'div'} className={classNames(cls.DropDown, {}, [className])}>
             <MenuButton
                 as={'button'}
-                className={cls.button}
+                className={classNames(cls.button, {}, [triggerClassname])}
                 draggable
                 onDragStart={(e) => {
                     e.preventDefault();
+                    e.stopPropagation();
+                }}
+                onClick={(e) => {
                     e.stopPropagation();
                 }}
             >
@@ -66,10 +76,8 @@ export const DropDown = memo((props: DropDownProps) => {
             >
                 <MenuItems
                     anchor={anchor}
-                    className={classNames(cls.menuWrapper, {}, [
-                        theme,
-                        movedClassname,
-                    ])}
+                    className={classNames(cls.menuWrapper, {}, [theme])}
+                    as={'div'}
                 >
                     <div className={cls.menuHeader}>Параметры</div>
                     {items.map((item, index) => (

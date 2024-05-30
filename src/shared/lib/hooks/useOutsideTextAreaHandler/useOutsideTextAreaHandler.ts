@@ -1,6 +1,6 @@
 import { RefObject, useCallback, useEffect } from 'react';
 
-type ediTypes = 'column_title' | 'board_title';
+type ediTypes = 'column_title' | 'board_title' | 'card_text';
 
 export function useOutsideDivHandler(
     editType: ediTypes,

@@ -13,10 +13,11 @@ import { useDeleteCard } from '../../api/deleteCardApi';
 interface CardPopoverProps {
     className?: string;
     cardId: number;
+    cardText: string;
 }
 
 export const CardPopover = (props: CardPopoverProps) => {
-    const { className, cardId } = props;
+    const { className, cardId, cardText } = props;
 
     const [deleteCard] = useDeleteCard();
 
@@ -26,26 +27,6 @@ export const CardPopover = (props: CardPopoverProps) => {
     };
 
     const items = [
-        {
-            content: <TextArea />,
-            onClick: (e: SyntheticEvent<HTMLDivElement>) => {
-                e.preventDefault();
-            },
-        },
-        {
-            content: (
-                <Button
-                    variant={'LeftAddonPopoverButton'}
-                    className={cls.menuSaveButton}
-                >
-                    <IconLayout Svg={PenIcon} width={13} height={14} />
-                    Сохранить
-                </Button>
-            ),
-            onClick: (e: SyntheticEvent<HTMLDivElement>) => {
-                e.preventDefault();
-            },
-        },
         {
             content: (
                 <Button fullWidth={true} variant={'LeftAddonPopoverButton'}>
@@ -66,7 +47,7 @@ export const CardPopover = (props: CardPopoverProps) => {
             }
             items={items}
             className={classNames(cls.CardPopover, {}, [className])}
-            movedClassname={cls.MenuMove}
+            triggerClassname={cls.popoverButton}
         ></DropDown>
     );
 };
