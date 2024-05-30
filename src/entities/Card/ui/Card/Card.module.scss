@@ -1,0 +1,35 @@
+.Card {
+    position: relative;
+    border-radius: 6px;
+    width: 100%;
+    min-height: 32px;
+    background-color: var(--card);
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 7px 10px;
+    overflow: hidden;
+
+    p {
+        font-size: 0.875em;
+        overflow-wrap: anywhere;
+        line-height: 140%;
+    }
+
+    .cardButton {
+        position: absolute;
+        transition: all 0.1s ease;
+        pointer-events: none;
+
+        // TODO DELETE THIS
+        opacity: 1;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    &:hover > .cardButton {
+        pointer-events: all;
+        opacity: 1;
+    }
+}

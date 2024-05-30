@@ -12,7 +12,7 @@
     height: 75px;
     border-radius: 6px;
     resize: none;
-    overflow: hidden;
+    overflow: auto;
 
     &::placeholder {
         color: var(--search-placeholder-color);

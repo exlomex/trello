@@ -1,7 +1,7 @@
 {
   "boards": [
     {
-      "board_title": "ura",
+      "board_title": "test",
       "id": "1",
       "column_title": "card_hzhzfsdfsfs",
       "editType": "text"
@@ -57,16 +57,6 @@
       "columnId": 13,
       "card_text": "fdsfsd",
       "id": 45
-    },
-    {
-      "columnId": 15,
-      "card_text": "fghfhfhf",
-      "id": 48
-    },
-    {
-      "columnId": 16,
-      "card_text": "gdgd",
-      "id": 47
     },
     {
       "columnId": 16,

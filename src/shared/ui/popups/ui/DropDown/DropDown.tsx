@@ -28,10 +28,17 @@ interface DropDownProps {
     items: DropdownItem[];
     trigger: ReactNode;
     anchor?: AnchorProps;
+    movedClassname?: string;
 }
 
 export const DropDown = memo((props: DropDownProps) => {
-    const { className, anchor = 'bottom end', trigger, items } = props;
+    const {
+        className,
+        anchor = 'bottom end',
+        trigger,
+        items,
+        movedClassname,
+    } = props;
 
     const { theme } = useTheme();
 
@@ -59,7 +66,10 @@ export const DropDown = memo((props: DropDownProps) => {
             >
                 <MenuItems
                     anchor={anchor}
-                    className={classNames(cls.menuWrapper, {}, [theme])}
+                    className={classNames(cls.menuWrapper, {}, [
+                        theme,
+                        movedClassname,
+                    ])}
                 >
                     <div className={cls.menuHeader}>Параметры</div>
                     {items.map((item, index) => (

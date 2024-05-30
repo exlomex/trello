@@ -77,8 +77,7 @@ export const ColumnLayout = (props: ColumnProps) => {
                                         >
                                             <Card
                                                 cardDescription={card.card_text}
-                                                columnIndex={index}
-                                                cardIndex={cardIndex}
+                                                cardId={+card.id}
                                             />
                                         </div>
                                     )}
