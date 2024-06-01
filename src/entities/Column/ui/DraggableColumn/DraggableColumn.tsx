@@ -58,7 +58,6 @@ export const DraggableColumn = ({
                 columnTitle={column.column_title}
                 cardsData={column.cards}
                 columnId={+column.id}
-                index={index}
                 className={classNames('', {}, [className])}
             />
         </div>

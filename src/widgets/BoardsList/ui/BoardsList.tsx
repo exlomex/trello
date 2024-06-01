@@ -1,16 +1,47 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { ChangeEvent, FC, useCallback, useState } from 'react';
-import { Modal } from '@/shared/ui/Modal';
-import { DropDown } from '@/shared/ui/popups';
-import { Button } from '@/shared/ui/Button';
-import { IconLayout } from '@/shared/layouts/IconLayout';
-import DeleteIcon from '@/shared/assets/delete.svg';
+import { ColumnLayout } from '@/entities/Column';
+import { useParams, useRouter } from 'next/navigation';
+import { useGetAllBoardColumns } from '@/widgets/BoardCards/api/BoardCardsApi';
+import { useAllBords } from '@/features/AllBoardsList/api/AllBoardsApi';
+import { HStack } from '@/shared/ui/Stack';
+import { useCallback } from 'react';
 import cls from './BoardsList.module.scss';
 
 interface BoardsListProps {
     className?: string;
 }
 
-export const BoardsList = ({ className }: BoardsListProps) => (
-    <div className={classNames(cls.BoardsList, {}, [className])}></div>
-);
+export const BoardsList = ({ className }: BoardsListProps) => {
+    const { data: boards, isLoading } = useAllBords(null, {
+        // pollingInterval: 5000,
+    });
+
+    const router = useRouter();
+
+    const handleRedirect = useCallback(
+        (id: string) => () => {
+            const originalPath = window.location.origin;
+            router.push(`${originalPath}/BoardPage/${id}`);
+        },
+        [router],
+    );
+
+    return (
+        <HStack
+            className={classNames(cls.BoardsList, {}, [className])}
+            gap={'16'}
+        >
+            {boards &&
+                boards.map((board) => (
+                    <ColumnLayout
+                        key={board.id}
+                        type={'delete'}
+                        columnTitle={board.board_title}
+                        boardId={+board.id}
+                        className={cls.columnLayout}
+                        onClick={handleRedirect(board.id)}
+                    ></ColumnLayout>
+                ))}
+        </HStack>
+    );
+};

@@ -4,20 +4,17 @@ import DeleteIcon from '@/shared/assets/delete.svg';
 import { SyntheticEvent } from 'react';
 import { DropDown } from '@/shared/ui/popups';
 import PointsSettingIcon from '@/shared/assets/pointsSettings.svg';
-import { TextArea } from '@/shared/ui/TextArea';
 import { Button } from '@/shared/ui/Button';
-import PenIcon from '@/shared/assets/pen.svg';
 import cls from './CardPopover.module.scss';
 import { useDeleteCard } from '../../api/deleteCardApi';
 
 interface CardPopoverProps {
     className?: string;
     cardId: number;
-    cardText: string;
 }
 
 export const CardPopover = (props: CardPopoverProps) => {
-    const { className, cardId, cardText } = props;
+    const { className, cardId } = props;
 
     const [deleteCard] = useDeleteCard();
 

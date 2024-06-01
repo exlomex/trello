@@ -1,12 +1,6 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { TextArea } from '@/shared/ui/TextArea';
-import {
-    ForwardedRef,
-    forwardRef,
-    useCallback,
-    useEffect,
-    useState,
-} from 'react';
+import { ForwardedRef, forwardRef, useCallback, useState } from 'react';
 import { HStack } from '@/shared/ui/Stack';
 import { Button } from '@/shared/ui/Button';
 import CloseIcon from '@/shared/assets/close.svg';

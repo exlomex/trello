@@ -1,5 +1,4 @@
 import { classNames } from '@/shared/lib/classNames';
-import cls from '@/widgets/AsideMenu/ui/AsideMenu.module.scss';
 import { Button } from '@/shared/ui/Button';
 import { memo, useCallback, useState } from 'react';
 import { AddNewBoardModal } from '../AddNewBoardModal/AddNewBoardModal';

@@ -1,12 +1,13 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { ReactElement, useRef } from 'react';
-import { HStack } from '@/shared/ui/Stack';
+import React, { ReactElement, useRef } from 'react';
+import { HStack, VStack } from '@/shared/ui/Stack';
 import { Card } from '@/entities/Card';
 import { AddNewCard } from '@/features/AddNewCard';
 import { ColumnTitle } from '@/entities/Column';
 import { Droppable, Draggable } from '@hello-pangea/dnd';
 import { CardsTypes } from '@/widgets/BoardCards';
 import { ColumnDropDown } from '@/features/ColumnDropDown';
+import { Button } from '@/shared/ui/Button';
 import cls from './ColumnLayout.module.scss';
 
 export type ColumnType = 'view' | 'delete';
@@ -17,8 +18,9 @@ interface ColumnProps {
     children?: ReactElement;
     columnTitle?: string;
     cardsData?: CardsTypes[];
-    columnId: number;
-    index: number;
+    columnId?: number;
+    boardId?: number;
+    onClick?: () => void;
 }
 
 export const ColumnLayout = (props: ColumnProps) => {
@@ -29,17 +31,50 @@ export const ColumnLayout = (props: ColumnProps) => {
         columnTitle,
         cardsData,
         columnId,
-        index,
+        boardId,
     } = props;
 
     const windowRef = useRef(null);
+
+    const handleDeleteButton = (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.stopPropagation();
+        console.log(131);
+    };
+
+    if (type === 'delete') {
+        return (
+            <div
+                className={classNames(cls.Column, {}, [className])}
+                onClick={props.onClick}
+            >
+                <>
+                    {columnTitle && (
+                        <HStack justify={'between'} className={cls.upperLine}>
+                            <ColumnTitle
+                                TitleType={'boardTitle'}
+                                title={columnTitle}
+                                boardId={boardId}
+                            />
+                        </HStack>
+                    )}
+                    <Button
+                        fullWidth
+                        variant={'DeleteButton'}
+                        onClick={handleDeleteButton}
+                    >
+                        Удалить
+                    </Button>
+                </>
+            </div>
+        );
+    }
 
     return (
         <div
             ref={windowRef}
             className={classNames(cls.Column, {}, [className])}
         >
-            {columnTitle && (
+            {columnTitle && columnId && (
                 <HStack justify={'between'} className={cls.upperLine}>
                     <ColumnTitle title={columnTitle} columnId={columnId} />
                     <ColumnDropDown columnId={columnId} />

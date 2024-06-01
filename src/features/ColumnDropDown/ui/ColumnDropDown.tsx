@@ -16,7 +16,7 @@ interface ColumnDropDownProps {
 export const ColumnDropDown = (props: ColumnDropDownProps) => {
     const { className, columnId } = props;
 
-    const [deleteColumn, { error }] = useDeleteColumn();
+    const [deleteColumn] = useDeleteColumn();
 
     const deleteHandler = (e: SyntheticEvent<HTMLDivElement>) => {
         e.preventDefault();

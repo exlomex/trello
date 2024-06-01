@@ -2,7 +2,6 @@
 
 import './styles/index.scss';
 import React, { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
 import ThemeProvider from '@/app/providers/ThemeProvider/ui/ThemeProvider';
 import { ThemeLayout } from '@/shared/layouts/ThemeLayout/ThemeLayout';
 import { Inter } from 'next/font/google';

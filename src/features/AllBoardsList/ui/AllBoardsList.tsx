@@ -1,5 +1,5 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { FC, useCallback } from 'react';
+import { useCallback } from 'react';
 import { useAllBords } from '@/features/AllBoardsList/api/AllBoardsApi';
 import { BoardName } from '@/entities/BoardName';
 import { Skeleton } from '@/shared/ui/Skeleton';

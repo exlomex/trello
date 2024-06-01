@@ -1,18 +1,27 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { TextArea } from '@/shared/ui/TextArea';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useOutsideDivHandler } from '@/shared/lib/hooks/useOutsideTextAreaHandler/useOutsideTextAreaHandler';
 import { useEditColumnTitle } from '@/entities/Column/api/editColumnTitleApi';
+import { useEditBoardTitle } from '@/entities/EditableBoardTitle/api/editBoardTitleApi';
 import cls from './ColumnTitle.module.scss';
 
 interface ColumnTitleProps {
     className?: string;
     title?: string;
-    columnId: number;
+    columnId?: number;
+    boardId?: number;
+    TitleType?: 'boardTitle' | 'columnTitle';
 }
 
 export const ColumnTitle = (props: ColumnTitleProps) => {
-    const { className, title = 'Название не задано', columnId } = props;
+    const {
+        className,
+        title = 'Название не задано',
+        columnId,
+        TitleType = 'columnTitle',
+        boardId,
+    } = props;
     const [editable, setEditable] = useState(false);
     const [titleValue, setTitleValue] = useState(title);
     const textAreaRef = useRef<HTMLTextAreaElement>(null);
@@ -24,21 +33,26 @@ export const ColumnTitle = (props: ColumnTitleProps) => {
         }
     }, [editable]);
 
-    const [editColumnTitle, { error }] = useEditColumnTitle();
+    const [editColumnTitle] = useEditColumnTitle();
+    const [editBoardTitle] = useEditBoardTitle();
 
     useOutsideDivHandler(
-        'column_title',
+        TitleType === 'columnTitle' ? 'column_title' : 'board_title',
         textAreaRef,
         titleValue,
-        columnId,
+        TitleType === 'columnTitle' ? columnId : boardId,
         setEditable,
         editable,
-        editColumnTitle,
+        TitleType === 'columnTitle' ? editColumnTitle : editBoardTitle,
     );
 
-    const handleEditable = useCallback(() => {
-        setEditable(true);
-    }, []);
+    const handleEditable = useCallback(
+        (e: React.MouseEvent<HTMLParagraphElement>) => {
+            e.stopPropagation();
+            setEditable(true);
+        },
+        [],
+    );
 
     return (
         <div className={cls.titleWrapper}>

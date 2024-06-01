@@ -3,7 +3,6 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { CardPopover } from '@/entities/Card/ui/CardPopover/CardPopover';
 import { TextArea } from '@/shared/ui/TextArea';
 import { useOutsideDivHandler } from '@/shared/lib/hooks';
-import { useEditColumnTitle } from '@/entities/Column/api/editColumnTitleApi';
 import { useEditCardTitle } from '@/entities/Card/api/editCardTitleApi';
 import cls from './Card.module.scss';
 
@@ -64,11 +63,7 @@ export const Card = (props: CardProps) => {
                 ref={heightRef}
             >
                 <p>{titleValue}</p>
-                <CardPopover
-                    className={cls.cardButton}
-                    cardId={cardId}
-                    cardText={cardDescription}
-                />
+                <CardPopover className={cls.cardButton} cardId={cardId} />
             </div>
             <TextArea
                 style={{ height: `100px` }}

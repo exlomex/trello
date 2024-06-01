@@ -1,12 +1,5 @@
 import { classNames } from '@/shared/lib/classNames';
-import {
-    ChangeEvent,
-    memo,
-    ReactNode,
-    SyntheticEvent,
-    useEffect,
-    useRef,
-} from 'react';
+import { memo, ReactNode, SyntheticEvent } from 'react';
 import {
     Menu,
     MenuButton,
@@ -14,7 +7,6 @@ import {
     MenuItems,
     Transition,
 } from '@headlessui/react';
-import { Button } from '@/shared/ui/Button';
 import { useTheme } from '@/app/providers/ThemeProvider/lib/useTheme';
 import cls from './DropDown.module.scss';
 import '../../styles/teststyles.css';

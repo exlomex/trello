@@ -20,7 +20,7 @@ export const AddNewColumn = (props: AddNewColumnProps) => {
     const { className, boardId } = props;
     const [textAreaValue, setTextAreaValue] = useState('');
     const [isAddForm, setIsAddForm] = useState(false);
-    const [createColumn, { isLoading }] = useCreateNewColumn();
+    const [createColumn] = useCreateNewColumn();
     const ref = useRef<HTMLDivElement>(null);
 
     const clickAddButton = useCallback(() => {
@@ -52,7 +52,6 @@ export const AddNewColumn = (props: AddNewColumnProps) => {
                     Добавить еще одну колонку
                 </Button>
             ) : (
-                // @ts-ignore
                 <ColumnLayout className={cls.column}>
                     <HStack gap={'16'}>
                         <TextArea

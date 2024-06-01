@@ -1,12 +1,12 @@
 import { RefObject, useCallback, useEffect } from 'react';
 
-type ediTypes = 'column_title' | 'board_title' | 'card_text';
+type editTypes = 'column_title' | 'board_title' | 'card_text';
 
 export function useOutsideDivHandler(
-    editType: ediTypes,
+    editType: editTypes,
     ref: RefObject<HTMLTextAreaElement> | RefObject<HTMLInputElement>,
     textAreaValue: string,
-    columnId: number,
+    columnId?: number,
     stateFunction?: (state: boolean) => void,
     state?: boolean,
     updateDataFunction?: (params: { id: number; body: any }) => void,
@@ -17,7 +17,12 @@ export function useOutsideDivHandler(
                 if (ref && !ref.current.contains(e.target as Node)) {
                     stateFunction?.(false);
                     const requestBody = { [editType]: textAreaValue };
-                    updateDataFunction?.({ id: columnId, body: requestBody });
+                    if (columnId) {
+                        updateDataFunction?.({
+                            id: columnId,
+                            body: requestBody,
+                        });
+                    }
                 }
             }
         },
@@ -43,7 +48,9 @@ export function useOutsideDivHandler(
             if (e.key === 'Escape' || e.key === 'Enter') {
                 stateFunction?.(false);
                 const requestBody = { [editType]: textAreaValue };
-                updateDataFunction?.({ id: columnId, body: requestBody });
+                if (columnId) {
+                    updateDataFunction?.({ id: columnId, body: requestBody });
+                }
             }
         },
         [columnId, stateFunction, textAreaValue, updateDataFunction, editType],

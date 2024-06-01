@@ -2,7 +2,6 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo, ReactNode, useCallback, useEffect } from 'react';
 import { Portal } from '@/shared/ui/Portal';
 import { useTheme } from '@/app/providers/ThemeProvider/lib/useTheme';
-import { Transition } from '@headlessui/react';
 import cls from './Modal.module.scss';
 
 interface ModalProps {

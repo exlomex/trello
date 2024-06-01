@@ -1,5 +1,5 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
-import {
+import React, {
     ButtonHTMLAttributes,
     ForwardedRef,
     forwardRef,
@@ -15,7 +15,8 @@ export type ButtonVariant =
     | 'IconButton'
     | 'LeftAddonCreateButton'
     | 'LeftAddonAddButton'
-    | 'LeftAddonPopoverButton';
+    | 'LeftAddonPopoverButton'
+    | 'DeleteButton';
 
 export type ButtonBorderRadius = '6' | '12' | '16' | '24';
 export type ButtonSize = 'm' | 'l';

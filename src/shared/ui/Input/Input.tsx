@@ -1,9 +1,4 @@
-import React, {
-    ForwardedRef,
-    forwardRef,
-    InputHTMLAttributes,
-    memo,
-} from 'react';
+import React, { ForwardedRef, forwardRef, InputHTMLAttributes } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './Input.module.scss';
 

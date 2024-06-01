@@ -5,9 +5,7 @@ import { Button } from '@/shared/ui/Button';
 import { IconLayout } from '@/shared/layouts/IconLayout';
 import CloseIcon from '@/shared/assets/close.svg';
 import { memo, useCallback, useState } from 'react';
-import { CardsTypes } from '@/widgets/BoardCards';
 import { useCreateNewBoard } from '@/features/AddNewBoard/api/AddNewBoardApi';
-import { useCreateNewCard } from '@/features/AddNewCard/api/AddNewCardApi';
 import { AllBoards } from '@/features/AllBoardsList/model/types/AllBoards';
 import cls from './AddNewBoardForm.module.scss';
 
