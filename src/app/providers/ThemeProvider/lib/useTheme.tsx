@@ -1,5 +1,9 @@
 import { useContext } from 'react';
-import { LOCAL_STORAGE_THEME_KEY } from '@/shared/const/localstorages';
+import {
+    COOKIE_THEME_KEY,
+    LOCAL_STORAGE_THEME_KEY,
+} from '@/shared/const/localstorages';
+import { getCookie, setCookie } from 'cookies-next';
 import { Theme, ThemeContext } from './ThemeContext';
 
 export interface UseThemeResult {
@@ -14,6 +18,7 @@ export function useTheme(): UseThemeResult {
         const newTheme = theme === Theme.DARK ? Theme.LIGHT : Theme.DARK;
         setTheme?.(newTheme);
         localStorage.setItem(LOCAL_STORAGE_THEME_KEY, newTheme);
+        setCookie(COOKIE_THEME_KEY, newTheme);
     };
 
     return {

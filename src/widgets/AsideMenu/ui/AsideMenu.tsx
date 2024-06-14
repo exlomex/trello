@@ -8,8 +8,10 @@ import HideSvg from '@/shared/assets/hide.svg';
 import { AllBoardsList } from '@/features/AllBoardsList/ui/AllBoardsList';
 import { AddNewCard } from '@/features/AddNewCard/ui/AddNewCard';
 import { AddNewBoardButton } from '@/features/AddNewBoard';
-import { BoardsSearch } from '@/shared/ui/popups';
 import { useAllBords } from '@/features/AllBoardsList/api/AllBoardsApi';
+import { BoardsSearch } from '@/features/BoardsSearch';
+import { Popover } from '@/shared/ui/popups';
+import { useTheme } from '@/app/providers/ThemeProvider/lib/useTheme';
 import cls from './AsideMenu.module.scss';
 
 interface AsideMenuProps {
@@ -20,6 +22,8 @@ export const AsideMenu = memo(({ className }: AsideMenuProps) => {
     const [collapsed, setCollapsed] = useState(false);
 
     const [inputValue, setInputValue] = useState('');
+
+    const { theme, toggleTheme } = useTheme();
 
     const toggleCollapsed = () => {
         setCollapsed((prev) => !prev);
@@ -69,12 +73,23 @@ export const AsideMenu = memo(({ className }: AsideMenuProps) => {
                 />
             </div>
 
-            <IconLayout
-                Svg={SettingSvg}
-                clickable={true}
-                onClick={() => {}}
-                className={cls.settingButton}
-            ></IconLayout>
+            {/* <IconLayout */}
+            {/*    Svg={SettingSvg} */}
+            {/*    clickable={true} */}
+            {/*    onClick={() => {}} */}
+            {/*    className={cls.settingButton} */}
+            {/* ></IconLayout> */}
+            <Popover
+                anchor={'top start'}
+                trigger={
+                    <IconLayout
+                        Svg={SettingSvg}
+                        className={cls.settingButton}
+                    />
+                }
+            >
+                <button onClick={toggleTheme}>сменить тему</button>
+            </Popover>
         </aside>
     );
 });

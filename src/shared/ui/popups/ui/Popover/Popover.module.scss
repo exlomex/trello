@@ -1,0 +1,20 @@
+.button {
+    background-color: transparent;
+    min-height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.popoverPanel {
+    display: flex;
+    flex-direction: column;
+
+    --anchor-gap: 12px;
+
+    padding: 14px;
+    min-width: 100px;
+    background-color: var(--second-color);
+    border-radius: 12px;
+    color: var(--text-color);
+}

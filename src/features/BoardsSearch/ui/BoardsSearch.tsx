@@ -1,5 +1,5 @@
 import { classNames } from '@/shared/lib/classNames';
-import '../../shared/ui/popups/styles/teststyles.css';
+import '../../../shared/ui/popups/styles/teststyles.css';
 import {
     Combobox,
     ComboboxInput,
