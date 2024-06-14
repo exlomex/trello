@@ -8,6 +8,7 @@ import { Droppable, Draggable } from '@hello-pangea/dnd';
 import { CardsTypes } from '@/widgets/BoardCards';
 import { ColumnDropDown } from '@/features/ColumnDropDown';
 import { Button } from '@/shared/ui/Button';
+import { useDeleteBoard } from '@/entities/Column/api/deleteBoardApi';
 import cls from './ColumnLayout.module.scss';
 
 export type ColumnType = 'view' | 'delete';
@@ -36,9 +37,13 @@ export const ColumnLayout = (props: ColumnProps) => {
 
     const windowRef = useRef(null);
 
+    const [deleleBoard] = useDeleteBoard();
+
     const handleDeleteButton = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.stopPropagation();
-        console.log(131);
+        if (boardId) {
+            deleleBoard({ id: boardId });
+        }
     };
 
     if (type === 'delete') {
