@@ -8,6 +8,8 @@ import HideSvg from '@/shared/assets/hide.svg';
 import { AllBoardsList } from '@/features/AllBoardsList/ui/AllBoardsList';
 import { AddNewCard } from '@/features/AddNewCard/ui/AddNewCard';
 import { AddNewBoardButton } from '@/features/AddNewBoard';
+import { BoardsSearch } from '@/shared/ui/popups';
+import { useAllBords } from '@/features/AllBoardsList/api/AllBoardsApi';
 import cls from './AsideMenu.module.scss';
 
 interface AsideMenuProps {
@@ -27,6 +29,8 @@ export const AsideMenu = memo(({ className }: AsideMenuProps) => {
     const collapsedMods = {
         [cls.collapsedElem]: collapsed,
     };
+
+    const { data: boards } = useAllBords(null);
     return (
         <aside
             className={classNames(
@@ -40,11 +44,7 @@ export const AsideMenu = memo(({ className }: AsideMenuProps) => {
                 <div
                     className={classNames(cls.asideUpper, {}, [cls.hideButton])}
                 >
-                    <Input
-                        placeholder={'Поиск'}
-                        value={inputValue}
-                        onChange={setInputValue}
-                    />
+                    <BoardsSearch boards={boards} />
                     <Button
                         variant={'IconButton'}
                         borderRadius={'12'}

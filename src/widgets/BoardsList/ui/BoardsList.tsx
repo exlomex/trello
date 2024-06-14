@@ -5,6 +5,7 @@ import { useGetAllBoardColumns } from '@/widgets/BoardCards/api/BoardCardsApi';
 import { useAllBords } from '@/features/AllBoardsList/api/AllBoardsApi';
 import { HStack } from '@/shared/ui/Stack';
 import { useCallback } from 'react';
+import { Skeleton } from '@/shared/ui/Skeleton';
 import cls from './BoardsList.module.scss';
 
 interface BoardsListProps {
@@ -25,6 +26,37 @@ export const BoardsList = ({ className }: BoardsListProps) => {
         },
         [router],
     );
+
+    if (isLoading) {
+        return (
+            <HStack
+                className={classNames(cls.BoardsList, {}, [className])}
+                gap={'16'}
+            >
+                <Skeleton
+                    width={260}
+                    border={8}
+                    height={108}
+                    marginBottom={30}
+                    className={cls.boardNamePaddings}
+                />
+                <Skeleton
+                    width={260}
+                    border={8}
+                    height={108}
+                    marginBottom={30}
+                    className={cls.boardNamePaddings}
+                />
+                <Skeleton
+                    width={260}
+                    border={8}
+                    height={108}
+                    marginBottom={30}
+                    className={cls.boardNamePaddings}
+                />
+            </HStack>
+        );
+    }
 
     return (
         <HStack
