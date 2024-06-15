@@ -24,7 +24,6 @@
         "@reduxjs/toolkit": "^2.2.3",
         "@storybook/addon-themes": "^8.0.8",
         "concurrently": "^8.2.2",
-        "cookies-next": "^4.2.1",
         "css-loader": "^7.1.0",
         "next": "^14.1.4",
         "react": "^18",

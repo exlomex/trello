@@ -12,6 +12,8 @@ import { useAllBords } from '@/features/AllBoardsList/api/AllBoardsApi';
 import { BoardsSearch } from '@/features/BoardsSearch';
 import { Popover } from '@/shared/ui/popups';
 import { useTheme } from '@/app/providers/ThemeProvider/lib/useTheme';
+import { ThemeSwitcher } from '@/features/ThemeSwitcher';
+import { ThemePopover } from '@/features/ThemePopover';
 import cls from './AsideMenu.module.scss';
 
 interface AsideMenuProps {
@@ -73,23 +75,7 @@ export const AsideMenu = memo(({ className }: AsideMenuProps) => {
                 />
             </div>
 
-            {/* <IconLayout */}
-            {/*    Svg={SettingSvg} */}
-            {/*    clickable={true} */}
-            {/*    onClick={() => {}} */}
-            {/*    className={cls.settingButton} */}
-            {/* ></IconLayout> */}
-            <Popover
-                anchor={'top start'}
-                trigger={
-                    <IconLayout
-                        Svg={SettingSvg}
-                        className={cls.settingButton}
-                    />
-                }
-            >
-                <button onClick={toggleTheme}>сменить тему</button>
-            </Popover>
+            <ThemePopover />
         </aside>
     );
 });

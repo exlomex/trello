@@ -5,11 +5,11 @@ import {
     PopoverPanel,
     Transition,
 } from '@headlessui/react';
-import { ReactNode } from 'react';
-import cls from './Popover.module.scss';
-import { AnchorProps, DropdownItem } from '../DropDown/DropDown';
-import '../../styles/teststyles.css';
+import { ReactNode, useEffect, useRef } from 'react';
 import { useTheme } from '@/app/providers/ThemeProvider/lib/useTheme';
+import cls from './Popover.module.scss';
+import { AnchorProps } from '../DropDown/DropDown';
+import '../../styles/teststyles.css';
 
 interface PopoverProps {
     className?: string;
@@ -30,6 +30,16 @@ export const Popover = (props: PopoverProps) => {
 
     const { theme } = useTheme();
 
+    const panelRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        if (panelRef.current) {
+            const panel = panelRef.current;
+            panel.classList.remove('light', 'dark');
+            panel.classList.add(theme);
+        }
+    }, [theme]);
+
     return (
         <HPopover className={classNames(cls.Popover, {}, [className])}>
             <PopoverButton
@@ -46,11 +56,12 @@ export const Popover = (props: PopoverProps) => {
                 leave="transition-leave"
                 leaveFrom="transition-leave-from"
                 leaveTo="transition-leave-to"
-                as={'div'}
             >
                 <PopoverPanel
                     anchor={anchor}
+                    ref={panelRef}
                     className={classNames(cls.popoverPanel, {}, [theme])}
+                    as={'div'}
                 >
                     {children}
                 </PopoverPanel>

@@ -1,0 +1,48 @@
+.ThemeSwitcher {
+    width: 180px;
+    height: 30px;
+    background-color: var(--input-active-color);
+    border-radius: 40px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px;
+
+    p {
+        position: relative;
+        z-index: 20;
+        transition: color 0.1s ease;
+        color: var(--switch-text);
+        font-weight: 400;
+    }
+
+    .firstLabel {
+        color: var(--text-color);
+    }
+
+    .switchButton {
+        display: inline-block;
+        position: absolute;
+        background-color: var(--switch-button);
+        border-radius: 40px;
+        width: 95px;
+        height: 30px;
+        transition: transform 0.3s ease;
+        transform: translateX(-24px);
+    }
+
+    &[data-checked] {
+        .switchButton {
+            transform: translateX(61px);
+        }
+
+        .firstLabel {
+            color: var(--switch-text);
+        }
+
+        .lastLabel {
+            color: var(--text-color);
+        }
+    }
+}

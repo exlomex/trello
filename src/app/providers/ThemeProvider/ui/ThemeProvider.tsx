@@ -1,13 +1,9 @@
 import { FC, ReactNode, useEffect, useMemo, useState } from 'react';
-import {
-    COOKIE_THEME_KEY,
-    LOCAL_STORAGE_THEME_KEY,
-} from '@/shared/const/localstorages';
+import { LOCAL_STORAGE_THEME_KEY } from '@/shared/const/localstorages';
 import {
     Theme,
     ThemeContext,
 } from '@/app/providers/ThemeProvider/lib/ThemeContext';
-import { getCookie } from 'cookies-next';
 
 export interface ThemeProviderProps {
     children?: ReactNode;
