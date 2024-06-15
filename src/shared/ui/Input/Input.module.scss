@@ -8,6 +8,7 @@
     border-radius: 12px;
     width: 280px;
     height: 42px;
+    overflow-y: hidden;
 
     &::placeholder {
         color: var(--search-placeholder-color);

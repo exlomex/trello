@@ -1,17 +1,21 @@
-.newBoardText {
-    font-size: 1.1em;
-    font-weight: 600;
-}
+.AddNewBoardForm {
+    .newBoardText {
+        font-size: 1.1em;
+        font-weight: 600;
+    }
 
-.newBoardInput {
-    width: 500px;
-    border-radius: 6px;
+    .newBoardInput{
+        width: 500px;
+        border-radius: 6px;
 
-    &::placeholder {
-        font-size: 0.9em;
+        &::placeholder {
+            font-size: 0.9em;
+        }
+    }
+
+    .newBoardAddButton {
+        min-width: 457px;
     }
 }
 
-.newBoardAddButton {
-    min-width: 457px;
-}
+
