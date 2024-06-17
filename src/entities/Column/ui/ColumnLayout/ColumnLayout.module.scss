@@ -2,6 +2,7 @@
     border-radius: 12px;
     width: 260px;
     min-height: 10px;
+    max-height: 86vh;
     background-color: var(--second-color);
     padding: 15px 20px 20px;
     display: flex;
@@ -9,7 +10,7 @@
     transition: background-color 0.2s ease;
 
     .upperLine {
-        margin-bottom: 12px;
+        margin-bottom: 15px;
     }
 }
 

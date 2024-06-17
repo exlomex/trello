@@ -1,5 +1,5 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
-import React, { ReactElement, useRef } from 'react';
+import React, { ReactElement, useRef, useState } from 'react';
 import { HStack, VStack } from '@/shared/ui/Stack';
 import { Card } from '@/entities/Card';
 import { AddNewCard } from '@/features/AddNewCard';
@@ -9,6 +9,7 @@ import { CardsTypes } from '@/widgets/BoardCards';
 import { ColumnDropDown } from '@/features/ColumnDropDown';
 import { Button } from '@/shared/ui/Button';
 import { useDeleteBoard } from '@/entities/Column/api/deleteBoardApi';
+import { mergeRefs } from 'react-merge-refs';
 import cls from './ColumnLayout.module.scss';
 
 export type ColumnType = 'view' | 'delete';
@@ -77,7 +78,7 @@ export const ColumnLayout = (props: ColumnProps) => {
     return (
         <div
             ref={windowRef}
-            className={classNames(cls.Column, {}, [className])}
+            className={classNames(cls.Column, {}, [className, 'Column'])}
         >
             {columnTitle && columnId && (
                 <HStack justify={'between'} className={cls.upperLine}>
@@ -91,7 +92,9 @@ export const ColumnLayout = (props: ColumnProps) => {
                     <div
                         {...provided.droppableProps}
                         ref={provided.innerRef}
-                        className={cls.CardsContainer}
+                        className={classNames(cls.CardsContainer, {}, [
+                            'CardsContainer',
+                        ])}
                     >
                         {cardsData &&
                             cardsData.map((card, cardIndex) => (
@@ -128,7 +131,13 @@ export const ColumnLayout = (props: ColumnProps) => {
                 )}
             </Droppable>
 
-            {columnId && <AddNewCard columnId={columnId} ref={windowRef} />}
+            {columnId && (
+                <AddNewCard
+                    columnId={columnId}
+                    // ref={windowRef}
+                    ref={windowRef}
+                />
+            )}
 
             {children}
         </div>

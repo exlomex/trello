@@ -41,6 +41,16 @@ export const DropDown = memo((props: DropDownProps) => {
 
     const { theme } = useTheme();
 
+    const clickHandler = (
+        e: SyntheticEvent<HTMLDivElement>,
+        item: DropdownItem,
+    ) => {
+        e.stopPropagation();
+        if (item.onClick) {
+            item.onClick(e);
+        }
+    };
+
     return (
         <Menu as={'div'} className={classNames(cls.DropDown, {}, [className])}>
             <MenuButton
@@ -70,10 +80,22 @@ export const DropDown = memo((props: DropDownProps) => {
                     anchor={anchor}
                     className={classNames(cls.menuWrapper, {}, [theme])}
                     as={'div'}
+                    onClick={(e) => {
+                        e.stopPropagation();
+                    }}
                 >
                     <div className={cls.menuHeader}>Параметры</div>
                     {items.map((item, index) => (
-                        <MenuItem key={index} as={'div'} onClick={item.onClick}>
+                        <MenuItem
+                            key={index}
+                            as={'div'}
+                            onClick={(e: SyntheticEvent<HTMLDivElement>) => {
+                                e.stopPropagation();
+                                if (item.onClick) {
+                                    item.onClick(e);
+                                }
+                            }}
+                        >
                             {item.content}
                         </MenuItem>
                     ))}

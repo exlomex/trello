@@ -14,7 +14,11 @@ export function useOutsideDivHandler(
     const handleClick = useCallback(
         (e: MouseEvent) => {
             if (ref && 'current' in ref && ref.current) {
-                if (ref && !ref.current.contains(e.target as Node)) {
+                if (
+                    ref &&
+                    !ref.current.contains(e.target as Node) &&
+                    textAreaValue.trim().length
+                ) {
                     stateFunction?.(false);
                     const requestBody = { [editType]: textAreaValue };
                     if (columnId) {
@@ -45,7 +49,10 @@ export function useOutsideDivHandler(
 
     const onKeyDown = useCallback(
         (e: KeyboardEvent) => {
-            if (e.key === 'Escape' || e.key === 'Enter') {
+            if (
+                (e.key === 'Escape' || e.key === 'Enter') &&
+                textAreaValue.trim().length
+            ) {
                 stateFunction?.(false);
                 const requestBody = { [editType]: textAreaValue };
                 if (columnId) {

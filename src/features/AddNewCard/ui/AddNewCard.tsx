@@ -20,7 +20,7 @@ export const AddNewCard = forwardRef(
         const { className, columnId } = props;
         const [textAreaValue, setTextAreaValue] = useState('');
         const [isAddForm, setIsAddForm] = useState(false);
-        const [createPost, { isLoading }] = useCreateNewCard();
+        const [createPost] = useCreateNewCard();
 
         const clickAddButton = useCallback(() => {
             setIsAddForm(true);
@@ -31,14 +31,22 @@ export const AddNewCard = forwardRef(
         }, []);
 
         const onSendHandler = async () => {
-            const requestBody = {
-                columnId,
-                card_text: textAreaValue,
-            };
-            await createPost(requestBody as CardsTypes);
+            if (textAreaValue.trim()) {
+                const requestBody = {
+                    columnId,
+                    card_text: textAreaValue,
+                };
+                await createPost(requestBody as CardsTypes)
+                    .unwrap()
+                    .then(() => {
+                        setTextAreaValue('');
+                    })
+                    .catch((error) => console.error('rejected', error));
+            }
         };
 
         useOutsideDivHandler(ref, setIsAddForm);
+
         return (
             <div
                 className={classNames(cls.AddNewCard, {}, [className])}

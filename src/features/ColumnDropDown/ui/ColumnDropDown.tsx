@@ -18,11 +18,6 @@ export const ColumnDropDown = (props: ColumnDropDownProps) => {
 
     const [deleteColumn] = useDeleteColumn();
 
-    const deleteHandler = (e: SyntheticEvent<HTMLDivElement>) => {
-        e.preventDefault();
-        deleteColumn(columnId);
-    };
-
     const items = [
         {
             content: (
@@ -31,8 +26,8 @@ export const ColumnDropDown = (props: ColumnDropDownProps) => {
                     Удалить колонку
                 </Button>
             ),
-            onClick: (e: SyntheticEvent<HTMLDivElement>) => {
-                deleteHandler(e);
+            onClick: () => {
+                deleteColumn(columnId);
             },
         },
     ];

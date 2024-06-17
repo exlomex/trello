@@ -32,11 +32,18 @@ export const AddNewColumn = (props: AddNewColumnProps) => {
     }, []);
 
     const onSendHandler = async () => {
-        const requestBody = {
-            boardId,
-            column_title: textAreaValue,
-        };
-        await createColumn(requestBody as BoardColumnsType);
+        if (textAreaValue.trim()) {
+            const requestBody = {
+                boardId,
+                column_title: textAreaValue,
+            };
+            await createColumn(requestBody as BoardColumnsType)
+                .unwrap()
+                .then(() => {
+                    setTextAreaValue('');
+                })
+                .catch((error) => console.error('rejected', error));
+        }
     };
 
     useOutsideDivHandler(ref, setIsAddForm);

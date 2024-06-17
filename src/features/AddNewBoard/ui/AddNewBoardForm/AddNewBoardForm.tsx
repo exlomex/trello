@@ -7,6 +7,7 @@ import CloseIcon from '@/shared/assets/close.svg';
 import { memo, useCallback, useState } from 'react';
 import { useCreateNewBoard } from '@/features/AddNewBoard/api/AddNewBoardApi';
 import { AllBoards } from '@/features/AllBoardsList/model/types/AllBoards';
+import { QueryStatus } from '@reduxjs/toolkit/query';
 import cls from './AddNewBoardForm.module.scss';
 
 interface AddNewBoardFormProps {
@@ -23,14 +24,19 @@ export const AddNewBoardForm = memo((props: AddNewBoardFormProps) => {
 
     const [addBoardInputValue, setAddBoardInputValue] = useState('');
 
-    const [createNewBoard, { error }] = useCreateNewBoard();
+    const [createNewBoard] = useCreateNewBoard();
     const newBoardOnSendHandler = async () => {
-        const requestBody = {
-            board_title: addBoardInputValue,
-        };
-        await createNewBoard(requestBody as AllBoards);
-        if (!error) {
-            newBoardClickCloseButton();
+        if (addBoardInputValue) {
+            const requestBody = {
+                board_title: addBoardInputValue,
+            };
+            await createNewBoard(requestBody as AllBoards)
+                .unwrap()
+                .then(() => {
+                    newBoardClickCloseButton();
+                    setAddBoardInputValue('');
+                })
+                .catch((error) => console.error('rejected', error));
         }
     };
 
