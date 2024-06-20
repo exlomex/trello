@@ -77,6 +77,7 @@ export const BoardCards = (props: BoardCardsProps) => {
                     <EditableBoardTitle
                         boardName={boardData.board_title}
                         className={cls.boardNamePaddings}
+                        boardColor={boardData.board_color}
                     />
                 )}
             </div>

@@ -7,8 +7,8 @@ import CloseIcon from '@/shared/assets/close.svg';
 import { memo, useCallback, useState } from 'react';
 import { useCreateNewBoard } from '@/features/AddNewBoard/api/AddNewBoardApi';
 import { AllBoards } from '@/features/AllBoardsList/model/types/AllBoards';
-import { QueryStatus } from '@reduxjs/toolkit/query';
 import cls from './AddNewBoardForm.module.scss';
+import { getRandomPastelColor } from '../../lib/randomColor';
 
 interface AddNewBoardFormProps {
     className?: string;
@@ -27,8 +27,11 @@ export const AddNewBoardForm = memo((props: AddNewBoardFormProps) => {
     const [createNewBoard] = useCreateNewBoard();
     const newBoardOnSendHandler = async () => {
         if (addBoardInputValue) {
+            const pastelColor = getRandomPastelColor();
+
             const requestBody = {
                 board_title: addBoardInputValue,
+                board_color: pastelColor,
             };
             await createNewBoard(requestBody as AllBoards)
                 .unwrap()
@@ -59,7 +62,7 @@ export const AddNewBoardForm = memo((props: AddNewBoardFormProps) => {
                     variant={'DefaultButton'}
                     onClick={newBoardOnSendHandler}
                 >
-                    Добавить колонку
+                    Добавить доску
                 </Button>
                 <Button
                     variant={'IconButton'}

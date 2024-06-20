@@ -1,4 +1,5 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
+import { useCallback } from 'react';
 import cls from './BoardName.module.scss';
 
 interface BoardNameProps {
@@ -10,6 +11,7 @@ interface BoardNameProps {
 
 export const BoardName = (props: BoardNameProps) => {
     const { className, boardColor = '#868686', boardName } = props;
+
     return (
         <div
             className={classNames(cls.BoardName, {}, [className])}

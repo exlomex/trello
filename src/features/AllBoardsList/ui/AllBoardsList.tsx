@@ -63,6 +63,7 @@ export const AllBoardsList = ({ className }: AllBoardsListProps) => {
                         key={board.id}
                         onClick={() => onChangePage(board.id)}
                         boardName={board.board_title}
+                        boardColor={board.board_color}
                     />
                 ))}
         </div>
