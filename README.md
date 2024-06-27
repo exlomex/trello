@@ -1,36 +1,104 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Trello clone
 
-## Getting Started
+![trello-demo](https://github.com/exlomex/trello/assets/41301635/a229033e-3801-40eb-8cf0-d084a05bf755)
 
-First, run the development server:
+### Запуск проекта
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```
+npm install - установка зависимостей
+dev:withJsonServer - jsonServer + frontend (dev mode)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Основной стек
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- TypeScript (v5)
+- Next.js (v14) 
+- RTK - Redux Toolkit (v2)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Другие библиотеки
 
-## Learn More
+- Jest (v29)
+- React Testing Library
+- Storybook (v8)
+- React-dnd (v13)
+- Beautiful-dnd (v16)
+- Headless-ui (v2)
+- Eslint (v8)
+- Stylelint (v16)
+- Prettier (v3)
 
-To learn more about Next.js, take a look at the following resources:
+---
 
--   [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
--   [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Скрипты
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- `npm run start-dev-server` - запуск jsonServer,
+- `npm run start:dev:server--new` - запуск jsonServer (with custom routes),
+- `npm run dev` - запуск frontend (dev),
+- `npm run dev:withJsonServer` - jsonServer + frontend (dev mode),
+- `npm run build` - сборка в production,
+- `npm run start` - frontend (prod mode),
+- `npm run prod:withJsonServer` - jsonServer + frontend (prod mode),
+- `npm run lint:ts` - проверка ts файлов линтером,
+- `npm run lint:ts:fix` - исправление ts файлов линтером,
+- `npm run lint:scss` - проверка scss файлов style линтером,
+- `npm run lint:scss:fix` - исправление scss файлов style линтером,
+- `npm run unit` - запуск unit тестов,
 
-## Deploy on Vercel
+[//]: # (- "storybook": "storybook dev -p 6006",)
+[//]: # (- "build-storybook": "storybook build",)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+[//]: # (## Архитектура проекта)
+
+[//]: # ()
+[//]: # (Проект написан в соответствии с методологией Feature sliced design)
+
+[//]: # ()
+[//]: # (Ссылка на документацию - [feature sliced design]&#40;https://feature-sliced.design/docs/get-started/tutorial&#41;)
+
+[//]: # ()
+[//]: # (----)
+
+[//]: # (## Тесты)
+
+[//]: # ()
+[//]: # (В проекте используются 4 вида тестов:)
+
+[//]: # (1&#41; Обычные unit тесты на jest - `npm run test:unit`)
+
+[//]: # (2&#41; Тесты на компоненты с React testing library -`npm run test:unit`)
+
+[//]: # (3&#41; Скриншотное тестирование с loki `npm run test:ui`)
+
+[//]: # (4&#41; e2e тестирование с Cypress `npm run test:e2e`)
+
+[//]: # ()
+[//]: # (Подробнее о тестах - [документация тестирование]&#40;/docs/tests.md&#41;)
+
+[//]: # ()
+[//]: # (----)
+
+### Линтинг
+
+В проекте используется eslint для проверки typescript и stylelint для проверки файлов со стилями.
+
+##### Запуск линтеров
+- `npm run lint:ts` - Проверка ts файлов линтером
+- `npm run lint:ts:fix` - Исправление ts файлов линтером
+- `npm run lint:scss` - Проверка scss файлов style линтером
+- `npm run lint:scss:fix` - Исправление scss файлов style линтером
+
+
+[//]: # (### CI pipeline и pre commit хуки)
+
+[//]: # ()
+[//]: # (Конфигурация github actions находится в /.github/workflows.)
+
+[//]: # (В ci прогоняются все виды тестов, сборка проекта и сторибука, линтинг.)
+
+[//]: # ()
+[//]: # (В прекоммит хуках проверяем проект линтерами, конфиг в /.husky)
+
+[//]: # ()
+[//]: # (----)

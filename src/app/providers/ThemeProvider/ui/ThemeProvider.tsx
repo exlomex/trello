@@ -1,4 +1,11 @@
-import { FC, ReactNode, useEffect, useMemo, useState } from 'react';
+import {
+    FC,
+    ReactNode,
+    useEffect,
+    useLayoutEffect,
+    useMemo,
+    useState,
+} from 'react';
 import { LOCAL_STORAGE_THEME_KEY } from '@/shared/const/localstorages';
 import {
     Theme,
@@ -12,12 +19,13 @@ export interface ThemeProviderProps {
 const ThemeProvider: FC<ThemeProviderProps> = ({ children }) => {
     const [theme, setTheme] = useState<Theme>(Theme.DARK);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         const storedTheme = localStorage.getItem(
             LOCAL_STORAGE_THEME_KEY,
         ) as Theme | null;
         if (storedTheme) {
             setTheme(storedTheme);
+            document.body.classList.add('theme-loaded');
         }
     }, []);
 

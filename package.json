@@ -16,7 +16,8 @@
         "storybook": "storybook dev -p 6006",
         "build-storybook": "storybook build",
         "start-dev-server": "json-server --watch jsonserver/db.json --port 5000",
-        "start:dev:server--new": "node jsonserver/index.mjs"
+        "start:dev:server--new": "node jsonserver/index.mjs",
+        "prod:withJsonServer": "concurrently \"npm run start:dev:server--new\" \"npm run start\""
     },
     "dependencies": {
         "@headlessui/react": "^2.0.4",

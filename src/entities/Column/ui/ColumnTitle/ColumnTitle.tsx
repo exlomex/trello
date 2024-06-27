@@ -74,6 +74,7 @@ export const ColumnTitle = (props: ColumnTitleProps) => {
                 )}
                 value={titleValue}
                 onChange={setTitleValue}
+                onClick={(e) => e.stopPropagation()}
                 ref={textAreaRef}
             />
         </div>

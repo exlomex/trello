@@ -33,6 +33,7 @@ export const TextArea = forwardRef(
                     e.stopPropagation();
                 }}
                 style={props.style}
+                onClick={props.onClick}
             />
         );
     },
