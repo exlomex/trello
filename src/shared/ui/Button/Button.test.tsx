@@ -1,5 +1,4 @@
 import { fireEvent, render, screen } from '@testing-library/react';
-import { debug } from 'node:util';
 import { Button } from './Button';
 
 jest.mock('../../../shared/layouts/IconLayout', () => ({

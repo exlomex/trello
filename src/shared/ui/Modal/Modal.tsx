@@ -7,8 +7,8 @@ import cls from './Modal.module.scss';
 interface ModalProps {
     className?: string;
     children?: ReactNode;
-    isOpen?: boolean;
-    onClose?: () => void;
+    isOpen: boolean;
+    onClose: () => void;
     isPortal?: boolean;
 }
 
@@ -48,9 +48,16 @@ export const Modal = memo((props: ModalProps) => {
 
     return (
         <Portal isPortal={isPortal}>
-            <div className={classNames(cls.Modal, mods, [className, theme])}>
+            <div
+                className={classNames(cls.Modal, mods, [className, theme])}
+                data-testid={'modal'}
+            >
                 <div className={cls.content}>{children}</div>
-                <div className={cls.overlay} onClick={closeHandler} />
+                <div
+                    className={cls.overlay}
+                    onClick={closeHandler}
+                    data-testid={'modalOverlay'}
+                />
             </div>
         </Portal>
     );

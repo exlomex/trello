@@ -11,9 +11,9 @@ dev:withJsonServer - jsonServer + frontend (dev mode)
 
 ## Основной стек
 
-- TypeScript (v5)
 - Next.js (v14) 
 - RTK - Redux Toolkit (v2)
+- TypeScript (v5)
 
 ### Другие библиотеки
 
