@@ -1,6 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { fn } from '@storybook/test';
-import { HideIcon } from '@/shared/ui/Icons/HideIcon';
 import { Modal } from './Modal';
 
 const meta = {

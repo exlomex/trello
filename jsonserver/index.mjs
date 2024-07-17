@@ -94,30 +94,41 @@ app.delete('/delete-board/:id', (req, res) => {
         // console.log(currentState);
         console.log(typeof boardId, typeof currentState.boards[0].id);
 
-        const boardToDelete = currentState.boards.find(board => board.id === boardId);
+        const boardToDelete = currentState.boards.find(
+            (board) => board.id === boardId,
+        );
         if (!boardToDelete) {
             throw new Error('Board not found');
         }
 
-        const columnsToDelete = currentState.columns.filter(column => column.boardId === boardId);
+        const columnsToDelete = currentState.columns.filter(
+            (column) => column.boardId === boardId,
+        );
 
-        columnsToDelete.forEach(column => {
-            const cardsToDelete = currentState.cards.filter(card => card.columnId === column.id);
-            cardsToDelete.forEach(card => {
-                const cardIndex = currentState.cards.findIndex(c => c.id === card.id);
+        columnsToDelete.forEach((column) => {
+            const cardsToDelete = currentState.cards.filter(
+                (card) => card.columnId === column.id,
+            );
+            cardsToDelete.forEach((card) => {
+                const cardIndex = currentState.cards.findIndex(
+                    (c) => c.id === card.id,
+                );
                 if (cardIndex !== -1) {
                     currentState.cards.splice(cardIndex, 1);
                 }
             });
 
-            const columnIndex = currentState.columns.findIndex(col => col.id === column.id);
+            const columnIndex = currentState.columns.findIndex(
+                (col) => col.id === column.id,
+            );
             if (columnIndex !== -1) {
                 currentState.columns.splice(columnIndex, 1);
             }
         });
 
-
-        const boardIndex = currentState.boards.findIndex(board => board.id === boardId);
+        const boardIndex = currentState.boards.findIndex(
+            (board) => board.id === boardId,
+        );
         if (boardIndex !== -1) {
             currentState.boards.splice(boardIndex, 1);
         }

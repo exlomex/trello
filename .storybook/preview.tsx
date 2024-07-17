@@ -1,5 +1,6 @@
 // .storybook/preview.tsx
 import '../src/app/styles/index.scss';
+import '../src/app/styles/storybookIndex.scss';
 import type { Preview } from '@storybook/react';
 import { Inter } from 'next/font/google';
 import React from 'react';
@@ -15,7 +16,7 @@ const inter = Inter({
 
 let preview: Preview = {
     parameters: {
-        actions: { argTypesRegex: '^on[A-Z].*' },
+        // actions: { argTypesRegex: '^on[A-Z].*' },
         controls: {
             matchers: {
                 color: /(background|color)$/i,

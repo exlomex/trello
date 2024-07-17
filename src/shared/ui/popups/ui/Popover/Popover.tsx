@@ -17,6 +17,7 @@ interface PopoverProps {
     anchor?: AnchorProps;
     triggerClassname?: string;
     children?: ReactNode;
+    storybookClassName?: string;
 }
 
 export const Popover = (props: PopoverProps) => {
@@ -26,6 +27,7 @@ export const Popover = (props: PopoverProps) => {
         triggerClassname,
         anchor = 'top',
         children,
+        storybookClassName,
     } = props;
 
     const { theme } = useTheme();
@@ -60,7 +62,10 @@ export const Popover = (props: PopoverProps) => {
                 <PopoverPanel
                     anchor={anchor}
                     ref={panelRef}
-                    className={classNames(cls.popoverPanel, {}, [theme])}
+                    className={classNames(cls.popoverPanel, {}, [
+                        theme,
+                        storybookClassName,
+                    ])}
                     as={'div'}
                 >
                     {children}

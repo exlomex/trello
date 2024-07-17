@@ -28,6 +28,7 @@ interface DropDownProps {
     trigger: ReactNode;
     anchor?: AnchorProps;
     triggerClassname?: string;
+    storybookClassName?: string;
 }
 
 export const DropDown = memo((props: DropDownProps) => {
@@ -37,6 +38,7 @@ export const DropDown = memo((props: DropDownProps) => {
         trigger,
         items,
         triggerClassname,
+        storybookClassName,
     } = props;
 
     const { theme } = useTheme();
@@ -78,7 +80,10 @@ export const DropDown = memo((props: DropDownProps) => {
             >
                 <MenuItems
                     anchor={anchor}
-                    className={classNames(cls.menuWrapper, {}, [theme])}
+                    className={classNames(cls.menuWrapper, {}, [
+                        theme,
+                        storybookClassName,
+                    ])}
                     as={'div'}
                     onClick={(e) => {
                         e.stopPropagation();
