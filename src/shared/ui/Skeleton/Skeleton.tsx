@@ -24,6 +24,7 @@ export const Skeleton = memo((props: SkeletonProps) => {
         <div
             className={classNames(cls.Skeleton, {}, [className])}
             style={styles}
+            data-testid={'skeleton'}
         />
     );
 });

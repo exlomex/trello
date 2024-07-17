@@ -1,5 +1,4 @@
 import { render, screen } from '@testing-library/react';
-import { debug } from 'node:util';
 import { Portal } from './Portal';
 
 jest.mock('../../../shared/layouts/IconLayout', () => ({
