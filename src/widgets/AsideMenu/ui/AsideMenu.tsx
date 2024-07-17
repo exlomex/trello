@@ -1,18 +1,13 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo, useState } from 'react';
-import SettingSvg from '@/shared/assets/settings.svg';
 import { IconLayout } from '@/shared/layouts/IconLayout';
-import { Input } from '@/shared/ui/Input';
 import { Button } from '@/shared/ui/Button/Button';
 import HideSvg from '@/shared/assets/hide.svg';
 import { AllBoardsList } from '@/features/AllBoardsList/ui/AllBoardsList';
-import { AddNewCard } from '@/features/AddNewCard/ui/AddNewCard';
 import { AddNewBoardButton } from '@/features/AddNewBoard';
 import { useAllBords } from '@/features/AllBoardsList/api/AllBoardsApi';
 import { BoardsSearch } from '@/features/BoardsSearch';
-import { Popover } from '@/shared/ui/popups';
 import { useTheme } from '@/app/providers/ThemeProvider/lib/useTheme';
-import { ThemeSwitcher } from '@/features/ThemeSwitcher';
 import { ThemePopover } from '@/features/ThemePopover';
 import cls from './AsideMenu.module.scss';
 

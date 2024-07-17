@@ -1,6 +1,6 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
-import React, { ReactElement, useRef, useState } from 'react';
-import { HStack, VStack } from '@/shared/ui/Stack';
+import React, { ReactElement, useRef } from 'react';
+import { HStack } from '@/shared/ui/Stack';
 import { Card } from '@/entities/Card';
 import { AddNewCard } from '@/features/AddNewCard';
 import { ColumnTitle } from '@/entities/Column';
@@ -9,7 +9,6 @@ import { CardsTypes } from '@/widgets/BoardCards';
 import { ColumnDropDown } from '@/features/ColumnDropDown';
 import { Button } from '@/shared/ui/Button';
 import { useDeleteBoard } from '@/entities/Column/api/deleteBoardApi';
-import { mergeRefs } from 'react-merge-refs';
 import cls from './ColumnLayout.module.scss';
 
 export type ColumnType = 'view' | 'delete';
