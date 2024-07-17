@@ -1,6 +1,6 @@
 ## Trello clone
 
-![trello-demo](https://github.com/exlomex/trello/assets/41301635/a229033e-3801-40eb-8cf0-d084a05bf755)
+https://github.com/user-attachments/assets/dcfc6182-2334-4b78-a072-759b1141df88
 
 ### Запуск проекта
 
