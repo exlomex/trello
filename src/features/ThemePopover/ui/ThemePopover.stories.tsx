@@ -1,11 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { StoreProvider } from '@/app/providers/StoreProvider';
 import ThemeProvider from '@/app/providers/ThemeProvider/ui/ThemeProvider';
-import { AsideMenu } from './AsideMenu';
+import { ThemePopover } from './ThemePopover';
 
 const meta = {
-    title: 'widgets/AsideMenu',
-    component: AsideMenu,
+    title: 'features/ThemePopover',
+    component: ThemePopover,
     parameters: {
         layout: 'centered',
     },
@@ -14,21 +13,19 @@ const meta = {
         // @ts-ignore
         backgroundColor: { control: 'color' },
     },
-    // args: { onClick: fn() },
     decorators: [
         (Story) => (
             <ThemeProvider>
-                <StoreProvider initialState={{}}>
-                    <Story />
-                </StoreProvider>
+                <Story />
             </ThemeProvider>
         ),
     ],
-} satisfies Meta<typeof AsideMenu>;
+    // args: { onClick: fn() },
+} satisfies Meta<typeof ThemePopover>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const asideMenu: Story = {
-    args: { className: '31' },
+export const columnDropDown: Story = {
+    args: {},
 };

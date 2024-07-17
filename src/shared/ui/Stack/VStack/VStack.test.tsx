@@ -6,7 +6,6 @@ describe('HStack tests', () => {
         render(<VStack>default</VStack>);
         const testHStack = screen.getByText('default');
         expect(testHStack).toBeInTheDocument();
-        screen.debug();
     });
 
     test('VStack default properties test', () => {
@@ -27,6 +26,5 @@ describe('HStack tests', () => {
         expect(testVStack).toHaveClass(
             'Flex justifyBetween alignEnd directionColumn wrap gap4',
         );
-        screen.debug();
     });
 });

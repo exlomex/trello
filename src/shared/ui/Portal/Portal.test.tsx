@@ -14,6 +14,5 @@ describe('Portal tests', () => {
         );
         const testPortal = screen.getByText('testPortal');
         expect(testPortal).toBeInTheDocument();
-        screen.debug();
     });
 });

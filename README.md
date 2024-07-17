@@ -68,6 +68,25 @@ dev:withJsonServer - jsonServer + frontend (dev mode)
 [//]: #
 [//]: # '----'
 
+### Storybook
+
+Также, для каждого компонента описаны стори-кейсы (stories) при помощи storybook
+
+![image](https://github.com/user-attachments/assets/078d3ec1-268d-480f-9f57-e5ef2a90172f)
+
+Запуск:
+- `npm run storybook`
+
+---
+
+### Тесты
+
+В проекте описаны unit а также react components тесты при помощи Jest и React Testing Library (RTL) соответственно. 
+
+Запуск:
+- `npm run unit`
+
+
 ### Линтинг
 
 В проекте используется eslint для проверки typescript и stylelint для проверки файлов со стилями.
@@ -79,11 +98,10 @@ dev:withJsonServer - jsonServer + frontend (dev mode)
 -   `npm run lint:scss` - Проверка scss файлов style линтером
 -   `npm run lint:scss:fix` - Исправление scss файлов style линтером
 
-[//]: # '### CI pipeline и pre commit хуки'
-[//]: #
-[//]: # 'Конфигурация github actions находится в /.github/workflows.'
-[//]: # 'В ci прогоняются все виды тестов, сборка проекта и сторибука, линтинг.'
-[//]: #
-[//]: # 'В прекоммит хуках проверяем проект линтерами, конфиг в /.husky'
-[//]: #
-[//]: # '----'
+### CI pipeline, pre-commit hooks
+
+В ci прогоняются все тесты, билд проекта, линтинг
+
+Прекоммит хуки - линтинг ts, scss
+
+----

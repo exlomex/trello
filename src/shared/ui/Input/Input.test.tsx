@@ -48,6 +48,5 @@ describe('Input tests', () => {
         );
         const testInput = screen.getByPlaceholderText('default');
         expect(testInput).toHaveAttribute('maxlength', '50');
-        screen.debug();
     });
 });

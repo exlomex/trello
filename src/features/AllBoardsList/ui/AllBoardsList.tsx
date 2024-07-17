@@ -4,14 +4,23 @@ import { useAllBords } from '@/features/AllBoardsList/api/AllBoardsApi';
 import { BoardName } from '@/entities/BoardName';
 import { Skeleton } from '@/shared/ui/Skeleton';
 import { useRouter } from 'next/navigation';
+import { AllBoards } from '@/features/AllBoardsList/model/types/AllBoards';
 import cls from './AllBoardsList.module.scss';
 
 interface AllBoardsListProps {
     className?: string;
+    customData?: AllBoards[];
 }
 
-export const AllBoardsList = ({ className }: AllBoardsListProps) => {
-    const { data: boards, isLoading } = useAllBords(null, {
+export const AllBoardsList = ({
+    className,
+    customData,
+}: AllBoardsListProps) => {
+    let { data: boards } = useAllBords(null, {
+        pollingInterval: 5000,
+    });
+
+    const { isLoading } = useAllBords(null, {
         // pollingInterval: 5000,
     });
     const router = useRouter();
@@ -24,11 +33,13 @@ export const AllBoardsList = ({ className }: AllBoardsListProps) => {
         [router],
     );
 
+    if (customData) boards = customData;
+
     return (
         <div className={classNames(cls.AllBoardsList, {}, [className])}>
             <h2 className={cls.AllBoardsTitle}>Все доски</h2>
 
-            {isLoading && (
+            {!customData && isLoading && (
                 <>
                     <Skeleton
                         width={150}
