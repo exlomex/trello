@@ -62,7 +62,7 @@ export const BoardCards = (props: BoardCardsProps) => {
     });
 
     return (
-        <VStack gap={'60'} wrap={'nowrap'}>
+        <VStack gap={'60'} wrap={'nowrap'} align={'start'}>
             <div className={cls.boardNameWrapper}>
                 {boardIsLoading && (
                     <Skeleton
